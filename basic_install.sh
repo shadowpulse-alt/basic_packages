@@ -1,6 +1,4 @@
 #!/bin/bash
 
-
 apt update
-apt upgrade -y
-apt install -y dos2unix sudo qemu-guest-agent speedtest-cli net-tools curl wget tasksel
+apt update && apt install -y dos2unix sudo speedtest-cli net-tools curl wget tasksel git
