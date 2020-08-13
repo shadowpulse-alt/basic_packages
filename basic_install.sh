@@ -13,3 +13,4 @@ apt install -y wget
 apt install -y tasksel
 apt install -y git
 apt install -y neofetch
+echo installation terminée avec succès.
