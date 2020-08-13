@@ -1,8 +1,9 @@
 #!/bin/bash
 
 
-apt update 
-apt install -y open-vm-tools         
+apt update
+apt upgrade -y
+apt install -y open-vm-tools     
 apt install -y dos2unix
 apt install -y sudo
 apt install -y speedtest-cli
