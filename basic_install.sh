@@ -1,6 +1,7 @@
 #!/bin/bash
 
 
+echo début de l'installation.
 apt update
 apt upgrade -y
 apt install -y open-vm-tools     
