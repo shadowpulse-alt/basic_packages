@@ -7,6 +7,6 @@ apt install -y open-vm-tools qemu-guest-agent dos2unix sudo speedtest-cli net-to
 echo "Install complete"
 
 #[2] Installation classique
-apt update && apt full-upgrade -y
-apt install -y dos2unix sudo speedtest-cli net-tools tasksel git neofetch
-echo "Install complete"
+#apt update && apt full-upgrade -y
+#apt install -y dos2unix sudo speedtest-cli net-tools tasksel git neofetch
+#echo "Install complete"
