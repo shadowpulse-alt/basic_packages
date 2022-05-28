@@ -20,7 +20,7 @@ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.
 menu_option_four() {
   echo "Delete olds .zshrc files"
 cd /home/"$USER" 
-sudo rm .zshrc* -f 
+sudo rm .zshrc* -f
 ls -la
 }
 
