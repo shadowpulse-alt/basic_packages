@@ -12,17 +12,17 @@ zsh && sudo apt install -y curl lm-sensors dos2unix sudo net-tools tasksel git n
 
 menu_option_three() {
   echo "Install Oh-My-Zsh"
-bash && sudo apt install -y zsh && sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" && cd /home/"$USER"
+bash && sudo apt install -y zsh && sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 }
 
 menu_option_four() {
   echo "Delete olds .zshrc files"
-bash && cd /home/"$USER" && ls -la  | grep '.zshrc' &&  rm .zshrc* -f && ls -la  | grep '.zshrc'
+bash && cd /home/"$USER" && rm .zshrc* -f && ls -la  | grep '.zshrc'
 }
 
 menu_option_five() {
   echo "Pull new .zshrc file"
-bash && cd /home/"$USER" && ls -la  | grep '.zshrc' && sudo wget https://raw.githubusercontent.com/ElectroFactory/basic_packages/master/.zshrc && ls -la  | grep '.zshrc'
+bash && cd /home/"$USER" && sudo wget https://raw.githubusercontent.com/ElectroFactory/basic_packages/master/.zshrc && ls -la  | grep '.zshrc'
 }
 
 menu_option_six() {
