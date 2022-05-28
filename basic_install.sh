@@ -40,7 +40,6 @@ ls -la
 menu_option_seven() {
   echo "Source .zshrc"
 bash
-cd /home/"$USER"
 source .zshrc
 }
 
