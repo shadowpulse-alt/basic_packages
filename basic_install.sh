@@ -100,17 +100,17 @@ until [ "$selection" = "0" ]; do
   read selection
   echo ""
   case $selection in
-    1 ) clear ; menu_option_one ; press_enter ;;
-    2 ) clear ; menu_option_two ; press_enter ;;
-    3 ) clear ; menu_option_three ; press_enter ;;
-    4 ) clear ; menu_option_four ; press_enter ;;
-    5 ) clear ; menu_option_five ; press_enter ;;
-    6 ) clear ; menu_option_six ; press_enter ;;
-	7 ) clear ; menu_option_seven ; press_enter ;;
-	8 ) clear ; menu_option_seven ; press_enter ;;
-	9 ) clear ; menu_option_seven ; press_enter ;;
+    1 )  clear ; menu_option_one ; press_enter ;;
+    2 )  clear ; menu_option_two ; press_enter ;;
+    3 )  clear ; menu_option_three ; press_enter ;;
+    4 )  clear ; menu_option_four ; press_enter ;;
+    5 )  clear ; menu_option_five ; press_enter ;;
+    6 )  clear ; menu_option_six ; press_enter ;;
+	7 )  clear ; menu_option_seven ; press_enter ;;
+	8 )  clear ; menu_option_seven ; press_enter ;;
+	9 )  clear ; menu_option_seven ; press_enter ;;
 	10 ) clear ; menu_option_ten ; press_enter ;;
-    0 ) clear ; exit ;;
-    * ) clear ; incorrect_selection ; press_enter ;;
+    0 )  clear ; exit ;;
+    * )  clear ; incorrect_selection ; press_enter ;;
   esac
 done
