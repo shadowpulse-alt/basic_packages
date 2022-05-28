@@ -17,7 +17,7 @@ sudo apt install -y zsh && sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/oh
 
 menu_option_four() {
   echo "Pull .zshrc file"
-cd /home/"$USER" && sudo rm .zshrc* -y && exit && sudo wget https://raw.githubusercontent.com/ElectroFactory/basic_packages/master/.zshrc && source .zshrc && zsh
+cd /home/"$USER" && sudo rm .zshrc* -f && exit && sudo wget https://raw.githubusercontent.com/ElectroFactory/basic_packages/master/.zshrc && source .zshrc && zsh
 }
 
 menu_option_five() {
