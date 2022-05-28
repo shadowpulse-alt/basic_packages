@@ -24,19 +24,7 @@ echo "waiting for the keypress"
 fi
 done
 
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
-echo "Press any key to continue"
-while [ true ] ; do
-read -t 3 -n 1
-if [ $? = 0 ] ; then
-exit ;
-else
-echo "waiting for the keypress"
-fi
-done
-
-cd /home/"$USER"
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" && cd /home/"$USER" && pwd
 
 echo "Press any key to continue"
 while [ true ] ; do
