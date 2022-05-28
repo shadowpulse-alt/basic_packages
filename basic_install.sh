@@ -26,7 +26,7 @@ npm install --global fast-cli
 }
 
 menu_option_six() {
-  echo "reboot"
+  echo "Reboot"
 sudo reboot
 }
 
@@ -44,12 +44,12 @@ incorrect_selection() {
 until [ "$selection" = "0" ]; do
   clear
   echo ""
-  echo "    	1  -  Menu Option 1"
-  echo "    	2  -  Menu Option 2"
-  echo "    	3  -  Menu Option 3"
-  echo "    	4  -  Menu Option 4"
-  echo "    	5  -  Menu Option 5"
-  echo "    	6  -  Menu Option 6"
+  echo "    	1  -  Update"
+  echo "    	2  -  Install Packages"
+  echo "    	3  -  Install Oh-My-Zsh"
+  echo "    	4  -  Retrieve .zshrc file"
+  echo "    	5  -  Install npm"
+  echo "    	6  -  Reboot"
   echo "    	0  -  Exit"
   echo ""
   echo -n "  Enter selection: "
