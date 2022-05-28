@@ -28,17 +28,18 @@ menu_option_five() {
   echo "Pull new .zshrc file"
 cd /home/"$USER"
 wget https://raw.githubusercontent.com/ElectroFactory/basic_packages/master/.zshrc
-ls -la  | grep '.zshrc*'
+ls -la
 }
 
 menu_option_six() {
   echo "Find .zshrc file at home directory"
 cd /home/"$USER" 
-ls -la  | grep '.zshrc*'
+ls -la
 }
 
 menu_option_seven() {
   echo "Source .zshrc"
+bash
 cd /home/"$USER"
 source .zshrc
 }
