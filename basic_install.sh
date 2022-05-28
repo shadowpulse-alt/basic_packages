@@ -40,7 +40,7 @@ ls -la  | grep '.zshrc*'
 menu_option_seven() {
   echo "Source .zshrc"
 cd /home/"$USER"
-sudo source .zshrc
+source .zshrc
 }
 
 menu_option_eight() {
