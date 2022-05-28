@@ -17,33 +17,33 @@ sudo apt install -y zsh && sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/oh
 
 menu_option_four() {
   echo "Delete olds .zshrc files"
-cd /home/"$USER" && ls -la  | grep '.zshrc' &&  rm .zshrc* -f && ls -la  | grep '.zshrc'
+bash && cd /home/"$USER" && ls -la  | grep '.zshrc' &&  rm .zshrc* -f && ls -la  | grep '.zshrc'
 }
 
 menu_option_five() {
   echo "Pull new .zshrc file"
-cd /home/"$USER" && ls -la  | grep '.zshrc' && sudo wget https://raw.githubusercontent.com/ElectroFactory/basic_packages/master/.zshrc && ls -la  | grep '.zshrc'
+bash && cd /home/"$USER" && ls -la  | grep '.zshrc' && sudo wget https://raw.githubusercontent.com/ElectroFactory/basic_packages/master/.zshrc && ls -la  | grep '.zshrc'
 }
 
 menu_option_six() {
   echo "Source .zshrc"
-bash
-cd /home/"$USER" && source .zshrc
+
+bash && cd /home/"$USER" && source .zshrc
 }
 
 menu_option_seven() {
   echo "Install npm"
-sudo npm install --global fast-cli
+zsh && sudo npm install --global fast-cli
 }
 
 menu_option_eight() {
   echo "Reboot"
-sudo shutdown now
+zsh && sudo shutdown now
 }
 
 menu_option_nine() {
   echo "Shutdown"
-sudo shutdown now
+zsh && sudo shutdown now
 }
 
 press_enter() {
