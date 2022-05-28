@@ -42,6 +42,7 @@ menu_option_seven() {
 cd /home/"$USER" 
 zsh
 source .zshrc
+zsh
 }
 
 menu_option_eight() {
