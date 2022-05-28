@@ -22,7 +22,6 @@ menu_option_four() {
 cd /home/"$USER" 
 sudo rm .zshrc* -f
 ls -la
-exit
 }
 
 menu_option_five() {
@@ -30,14 +29,12 @@ menu_option_five() {
 cd /home/"$USER"
 wget https://raw.githubusercontent.com/ElectroFactory/basic_packages/master/.zshrc
 ls -la
-exit
 }
 
 menu_option_six() {
   echo "Find .zshrc file at home directory"
 cd /home/"$USER" 
 ls -la
-exit
 }
 
 menu_option_seven() {
@@ -45,7 +42,6 @@ menu_option_seven() {
 cd /home/"$USER" 
 zsh
 source .zshrc
-exit
 }
 
 menu_option_eight() {
