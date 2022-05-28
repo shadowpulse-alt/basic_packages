@@ -12,7 +12,7 @@ apt install -y curl lm-sensors dos2unix sudo net-tools tasksel git npm neofetch 
 
 menu_option_three() {
   echo "Install Oh-My-Zsh"
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" && cd /home/"$USER" && pwd
+apt install zsh && sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" && cd /home/"$USER" && pwd
 }
 
 menu_option_four() {
