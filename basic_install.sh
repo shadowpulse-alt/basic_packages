@@ -21,7 +21,7 @@ menu_option_four() {
   echo "Delete olds .zshrc files"
 cd /home/"$USER" 
 sudo rm .zshrc* -f 
-ls -la  | grep '.zshrc*'
+ls -la
 }
 
 menu_option_five() {
