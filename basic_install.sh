@@ -30,6 +30,11 @@ menu_option_six() {
 sudo reboot
 }
 
+menu_option_seven() {
+  echo "Shutdown"
+sudo shutdown now
+}
+
 press_enter() {
   echo ""
   echo -n "      Press Enter to continue "
@@ -50,6 +55,7 @@ until [ "$selection" = "0" ]; do
   echo "    	4  -  Retrieve .zshrc file"
   echo "    	5  -  Install npm"
   echo "      	6  -  Reboot"
+  echo "      	7  -  Shutdown"
   echo "      	0  -  Exit"
   echo ""
   echo -n "      Enter selection: "
@@ -62,6 +68,7 @@ until [ "$selection" = "0" ]; do
     4 ) clear ; menu_option_four ; press_enter ;;
     5 ) clear ; menu_option_five ; press_enter ;;
     6 ) clear ; menu_option_six ; press_enter ;;
+	7 ) clear ; menu_option_seven ; press_enter ;;
     0 ) clear ; exit ;;
     * ) clear ; incorrect_selection ; press_enter ;;
   esac
