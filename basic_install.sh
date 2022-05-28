@@ -12,12 +12,12 @@ sudo apt install -y curl lm-sensors dos2unix sudo net-tools tasksel git npm neof
 
 menu_option_three() {
   echo "Install Oh-My-Zsh"
-sudo apt install -y zsh && sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" && cd /home/"$USER" && sudo rm .zshrc* -y
+sudo apt install -y zsh && sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" && cd /home/"$USER"
 }
 
 menu_option_four() {
   echo "Pull .zshrc file"
-cd /home/"$USER" && exit && sudo wget https://raw.githubusercontent.com/ElectroFactory/basic_packages/master/.zshrc && source .zshrc && zsh
+cd /home/"$USER" && sudo rm .zshrc* -y && exit && sudo wget https://raw.githubusercontent.com/ElectroFactory/basic_packages/master/.zshrc && source .zshrc && zsh
 }
 
 menu_option_five() {
