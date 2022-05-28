@@ -2,27 +2,27 @@
 
 menu_option_one() {
   echo "Update"
-apt update && apt full-upgrade -y
+sudo apt update && apt full-upgrade -y
 }
 
 menu_option_two() {
   echo "Install Packages"
-apt install -y curl lm-sensors dos2unix sudo net-tools tasksel git npm neofetch htop xrdp screen qemu-guest-agent
+sudo apt install -y curl lm-sensors dos2unix sudo net-tools tasksel git npm neofetch htop xrdp screen qemu-guest-agent
 }
 
 menu_option_three() {
   echo "Install Oh-My-Zsh"
-apt install -y zsh && sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" && cd /home/"$USER" && pwd
+sudo apt install -y zsh && sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" && cd /home/"$USER" && pwd
 }
 
 menu_option_four() {
   echo "Retrieve .zshrc file"
-wget https://raw.githubusercontent.com/ElectroFactory/basic_packages/master/.zshrc
+sudo wget https://raw.githubusercontent.com/ElectroFactory/basic_packages/master/.zshrc
 }
 
 menu_option_five() {
   echo "Install npm"
-npm install --global fast-cli
+sudo npm install --global fast-cli
 }
 
 menu_option_six() {
