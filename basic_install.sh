@@ -16,21 +16,31 @@ sudo apt install -y zsh && sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/oh
 }
 
 menu_option_four() {
-  echo "Pull .zshrc file"
-cd /home/"$USER" && sudo wget https://raw.githubusercontent.com/ElectroFactory/basic_packages/master/.zshrc && source .zshrc
+  echo "Delete olds .zshrc files"
+cd /home/"$USER" && rm .zshrc* -f
 }
 
 menu_option_five() {
+  echo "Pull new .zshrc file"
+cd /home/"$USER" && sudo wget https://raw.githubusercontent.com/ElectroFactory/basic_packages/master/.zshrc
+}
+
+menu_option_six() {
+  echo "Source .zshrc"
+cd /home/"$USER" && source .zshrc
+}
+
+menu_option_seven() {
   echo "Install npm"
 sudo npm install --global fast-cli
 }
 
-menu_option_six() {
+menu_option_eight() {
   echo "Reboot"
-sudo reboot
+sudo shutdown now
 }
 
-menu_option_seven() {
+menu_option_nine() {
   echo "Shutdown"
 sudo shutdown now
 }
@@ -52,10 +62,12 @@ until [ "$selection" = "0" ]; do
   echo "    	1  -  Update"
   echo "    	2  -  Install Packages"
   echo "    	3  -  Install Oh-My-Zsh"
-  echo "    	4  -  Retrieve .zshrc file"
-  echo "    	5  -  Install npm"
-  echo "      	6  -  Reboot"
-  echo "      	7  -  Shutdown"
+  echo "    	4  -  Delete olds .zshrc files"
+  echo "    	5  -  Pull new .zshrc file"
+  echo "      	6  -  Source .zshrc"
+  echo "      	7  -  Install npm"
+  echo "      	8  -  Reboot"
+  echo "      	9  -  Shutdown"
   echo "      	0  -  Exit"
   echo ""
   echo -n "      Enter selection: "
@@ -69,6 +81,8 @@ until [ "$selection" = "0" ]; do
     5 ) clear ; menu_option_five ; press_enter ;;
     6 ) clear ; menu_option_six ; press_enter ;;
 	7 ) clear ; menu_option_seven ; press_enter ;;
+	8 ) clear ; menu_option_seven ; press_enter ;;
+	9 ) clear ; menu_option_seven ; press_enter ;;
     0 ) clear ; exit ;;
     * ) clear ; incorrect_selection ; press_enter ;;
   esac
