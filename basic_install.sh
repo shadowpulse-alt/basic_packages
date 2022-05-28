@@ -12,7 +12,7 @@ sudo apt install -y curl lm-sensors dos2unix sudo net-tools tasksel git npm neof
 
 menu_option_three() {
   echo "Install Oh-My-Zsh"
-sudo apt install -y zsh && sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" && cd /home/"$USER" && sudo rm .zshrc*
+sudo apt install -y zsh && sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" && cd /home/"$USER" && sudo rm .zshrc* -y
 }
 
 menu_option_four() {
