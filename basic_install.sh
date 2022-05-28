@@ -31,21 +31,26 @@ cd /home/"$USER" && source .zshrc
 }
 
 menu_option_seven() {
+  echo "Find .zshrc file at home directory"
+cd /home/"$USER" && source .zshrc
+}
+
+menu_option_eight() {
   echo "Install npm"
 sudo npm install --global fast-cli
 }
 
-menu_option_eight() {
+menu_option_nine() {
   echo "Reboot"
 sudo reboot
 }
 
-menu_option_nine() {
+menu_option_ten() {
   echo "Shutdown"
 sudo shutdown now
 }
 
-menu_option_ten() {
+eleven() {
   echo "Power off"
 sudo poweroff
 }
@@ -70,10 +75,11 @@ until [ "$selection" = "0" ]; do
   echo "    	4  -  Delete olds .zshrc files"
   echo "    	5  -  Pull new .zshrc file"
   echo "      	6  -  Source .zshrc"
-  echo "      	7  -  Install npm"
-  echo "      	8  -  Reboot"
-  echo "      	9  -  Shutdown"
-  echo "      	10 -  Power off"
+  echo "      	7  -  Find .zshrc file at home directory"
+  echo "      	8  -  Install npm"
+  echo "      	9  -  Reboot"
+  echo "      	10 -  Shutdown"
+  echo "      	11 -  Power off"
   echo "      	0  -  Exit"
   echo ""
   echo -n "      Enter selection: "
