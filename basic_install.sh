@@ -27,6 +27,7 @@ cd /home/"$USER" && ls -la  | grep '.zshrc' && sudo wget https://raw.githubuserc
 
 menu_option_six() {
   echo "Source .zshrc"
+bash
 cd /home/"$USER" && source .zshrc
 }
 
