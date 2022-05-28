@@ -73,7 +73,7 @@ until [ "$selection" = "0" ]; do
   echo "      	7  -  Install npm"
   echo "      	8  -  Reboot"
   echo "      	9  -  Shutdown"
-  echo "      	9  -  Power off"
+  echo "      	10  -  Power off"
   echo "      	0  -  Exit"
   echo ""
   echo -n "      Enter selection: "
