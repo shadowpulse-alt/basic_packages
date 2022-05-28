@@ -49,8 +49,8 @@ until [ "$selection" = "0" ]; do
   echo "    	3  -  Install Oh-My-Zsh"
   echo "    	4  -  Retrieve .zshrc file"
   echo "    	5  -  Install npm"
-  echo "      6  -  Reboot"
-  echo "      0  -  Exit"
+  echo "      	6  -  Reboot"
+  echo "      	0  -  Exit"
   echo ""
   echo -n "      Enter selection: "
   read selection
