@@ -32,7 +32,7 @@ sudo reboot
 
 press_enter() {
   echo ""
-  echo -n "	Press Enter to continue "
+  echo -n "      Press Enter to continue "
   read
   clear
 }
@@ -50,9 +50,9 @@ until [ "$selection" = "0" ]; do
   echo "    	4  -  Retrieve .zshrc file"
   echo "    	5  -  Install npm"
   echo "    	6  -  Reboot"
-  echo "    	0  -  Exit"
+  echo "      0  -  Exit"
   echo ""
-  echo -n "  Enter selection: "
+  echo -n "      Enter selection: "
   read selection
   echo ""
   case $selection in
