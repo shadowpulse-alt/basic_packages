@@ -22,7 +22,7 @@ menu_option_four() {
 cd /home/"$USER" 
 sudo rm .zshrc* -f
 ls -la
-zsh
+exit
 }
 
 menu_option_five() {
@@ -30,14 +30,14 @@ menu_option_five() {
 cd /home/"$USER"
 wget https://raw.githubusercontent.com/ElectroFactory/basic_packages/master/.zshrc
 ls -la
-zsh
+exit
 }
 
 menu_option_six() {
   echo "Find .zshrc file at home directory"
 cd /home/"$USER" 
 ls -la
-zsh
+exit
 }
 
 menu_option_seven() {
@@ -45,13 +45,12 @@ menu_option_seven() {
 cd /home/"$USER" 
 zsh
 source .zshrc
-zsh
+exit
 }
 
 menu_option_eight() {
   echo "Install npm"
 sudo npm install --global fast-cli
-zsh
 }
 
 menu_option_nine() {
