@@ -17,17 +17,17 @@ sudo apt install -y zsh && sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/oh
 
 menu_option_four() {
   echo "Delete olds .zshrc files"
-bash <(cd /home/"$USER" && rm .zshrc* -f)
+cd /home/"$USER" && sudo rm .zshrc* -f
 }
 
 menu_option_five() {
   echo "Pull new .zshrc file"
-bash <(cd /home/"$USER" && sudo wget https://raw.githubusercontent.com/ElectroFactory/basic_packages/master/.zshrc)
+cd /home/"$USER" && wget https://raw.githubusercontent.com/ElectroFactory/basic_packages/master/.zshrc
 }
 
 menu_option_six() {
   echo "Source .zshrc"
-bash <(cd /home/"$USER" && source .zshrc)
+cd /home/"$USER" && source .zshrc
 }
 
 menu_option_seven() {
