@@ -2,52 +2,52 @@
 
 menu_option_one() {
   echo "Update"
-zsh && sudo apt update && apt full-upgrade -y
+sudo apt update && apt full-upgrade -y
 }
 
 menu_option_two() {
   echo "Install Packages"
-zsh && sudo apt install -y curl lm-sensors dos2unix sudo net-tools tasksel git npm neofetch htop xrdp screen qemu-guest-agent
+sudo apt install -y curl lm-sensors dos2unix sudo net-tools tasksel git npm neofetch htop xrdp screen qemu-guest-agent
 }
 
 menu_option_three() {
   echo "Install Oh-My-Zsh"
-bash && sudo apt install -y zsh && sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+sudo apt install -y zsh && sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 }
 
 menu_option_four() {
   echo "Delete olds .zshrc files"
-bash && cd /home/"$USER" && rm .zshrc* -f
+bash <(cd /home/"$USER" && rm .zshrc* -f)
 }
 
 menu_option_five() {
   echo "Pull new .zshrc file"
-bash && cd /home/"$USER" && sudo wget https://raw.githubusercontent.com/ElectroFactory/basic_packages/master/.zshrc
+bash <(cd /home/"$USER" && sudo wget https://raw.githubusercontent.com/ElectroFactory/basic_packages/master/.zshrc)
 }
 
 menu_option_six() {
   echo "Source .zshrc"
-bash && cd /home/"$USER" && source .zshrc
+bash <(cd /home/"$USER" && source .zshrc)
 }
 
 menu_option_seven() {
   echo "Install npm"
-zsh && sudo npm install --global fast-cli
+sudo npm install --global fast-cli
 }
 
 menu_option_eight() {
   echo "Reboot"
-zsh && sudo reboot
+sudo reboot
 }
 
 menu_option_nine() {
   echo "Shutdown"
-zsh && sudo shutdown now
+sudo shutdown now
 }
 
 menu_option_ten() {
   echo "Power off"
-zsh && sudo poweroff
+sudo poweroff
 }
 
 press_enter() {
