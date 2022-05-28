@@ -27,12 +27,12 @@ cd /home/"$USER" && wget https://raw.githubusercontent.com/ElectroFactory/basic_
 
 menu_option_six() {
   echo "Find .zshrc file at home directory"
-bash && cd /home/"$USER" && ls -la  | grep '.zshrc*'
+cd /home/"$USER" && bash && ls -la  | grep '.zshrc*'
 }
 
 menu_option_seven() {
   echo "Source .zshrc"
-bash && cd /home/"$USER" && source .zshrc
+cd /home/"$USER" && bash && source .zshrc
 }
 
 menu_option_eight() {
