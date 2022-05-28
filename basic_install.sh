@@ -26,12 +26,12 @@ cd /home/"$USER" && wget https://raw.githubusercontent.com/ElectroFactory/basic_
 }
 
 menu_option_six() {
-  echo "Source .zshrc"
+  echo "Find .zshrc file at home directory"
 cd /home/"$USER" && source .zshrc
 }
 
 menu_option_seven() {
-  echo "Find .zshrc file at home directory"
+  echo "Source .zshrc"
 cd /home/"$USER" && source .zshrc
 }
 
@@ -74,8 +74,8 @@ until [ "$selection" = "0" ]; do
   echo "    	3  -  Install Oh-My-Zsh"
   echo "    	4  -  Delete olds .zshrc files"
   echo "    	5  -  Pull new .zshrc file"
-  echo "      	6  -  Source .zshrc"
-  echo "      	7  -  Find .zshrc file at home directory"
+  echo "      	6  -  Find .zshrc file at home directory"
+  echo "      	7  -  Source .zshrc"
   echo "      	8  -  Install npm"
   echo "      	9  -  Reboot"
   echo "      	10 -  Shutdown"
