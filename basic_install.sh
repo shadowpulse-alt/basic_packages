@@ -32,7 +32,7 @@ cd /home/"$USER" && bash && ls -la  | grep '.zshrc*'
 
 menu_option_seven() {
   echo "Source .zshrc"
-cd /home/"$USER" && bash && source .zshrc
+cd /home/"$USER" && zsh && sudo source .zshrc
 }
 
 menu_option_eight() {
