@@ -10,7 +10,7 @@ apt full-upgrade -y
 
 menu_option_2() {
   echo "Install Packages"
-sudo apt install -y curl lm-sensors dos2unix sudo net-tools tasksel git npm neofetch htop xrdp screen qemu-guest-agent
+sudo apt install -y curl lm-sensors dos2unix sudo net-tools tasksel git npm neofetch htop xrdp screen iperf3 qemu-guest-agent
 }
 
 menu_option_3() {
