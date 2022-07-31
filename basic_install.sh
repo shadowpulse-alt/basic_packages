@@ -10,7 +10,7 @@ apt full-upgrade -y
 
 menu_option_2() {
   echo "Install Packages"
-sudo apt install -y curl sudo lm-sensors dos2unix sudo net-tools tasksel git npm neofetch htop xrdp screen iperf3 qemu-guest-agent realmd sssd-tools sssd libnss-sss libpam-sss adcli samba-common apt-get install zstd
+sudo apt install -y lm-sensors dos2unix sudo net-tools tasksel git npm neofetch htop xrdp screen iperf3 qemu-guest-agent realmd sssd-tools sssd libnss-sss libpam-sss adcli samba-common apt-get install zstd
 }
 
 menu_option_3() {
