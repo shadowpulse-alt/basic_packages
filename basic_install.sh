@@ -96,13 +96,13 @@ until [ "$selection" = "0" ]; do
   echo "    	01  -  Update"
   echo "    	02  -  Install Packages"
   echo "    	03  -  Install Oh-My-Zsh"
-  echo "        04  -  Delete olds .zshrc files \e[41m(classic user)"
-  echo "        05  -  Pull new .zshrc file \e[41m(classic user)"
-  echo "        06  -  Find .zshrc file at home directory \e[41m(classic user)"
-  echo "        07  -  Delete olds .zshrc files \e[41m(root user)"
-  echo "        08  -  Pull new .zshrc file \e[41m(root user)"
-  echo "        09  -  Find .zshrc file at home directory \e[41m(root user)"
-  echo "        10 -  Check current folder"
+  echo "        04  -  Delete olds .zshrc files (classic user)"
+  echo "        05  -  Pull new .zshrc file (classic user)"
+  echo "        06  -  Find .zshrc file at home directory (classic user)"
+  echo "        07  -  Delete olds .zshrc files (root user)"
+  echo "        08  -  Pull new .zshrc file (root user)"
+  echo "        09  -  Find .zshrc file at home directory (root user)"
+  echo "        10  -  Check current folder"
   echo "        11  -  Reboot"
   echo "        12  -  Shutdown"
   echo "        13  -  Power off"
@@ -122,11 +122,11 @@ until [ "$selection" = "0" ]; do
     07 )  clear ; menu_option_07 ; press_enter ;;
     08 )  clear ; menu_option_08 ; press_enter ;;
     09 )  clear ; menu_option_09 ; press_enter ;;
-    10 ) clear ; menu_option_10 ; press_enter ;;
-    11 ) clear ; menu_option_10 ; press_enter ;;
-    12 ) clear ; menu_option_10 ; press_enter ;;
-    13 ) clear ; menu_option_10 ; press_enter ;;
-    14 ) clear ; exit ;;
+    10 )  clear ; menu_option_10 ; press_enter ;;
+    11 )  clear ; menu_option_10 ; press_enter ;;
+    12 )  clear ; menu_option_10 ; press_enter ;;
+    13 )  clear ; menu_option_10 ; press_enter ;;
+    14 )  clear ; exit ;;
     *  )  clear ; incorrect_selection ; press_enter ;;
   esac
 done
