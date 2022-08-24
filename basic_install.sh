@@ -2,59 +2,79 @@
 
 echo "Basic packages installer V3.7.1"
 
-menu_option_1() {
+menu_option_01() {
   echo "Update"
 sudo apt update
 apt full-upgrade -y
 }
 
-menu_option_2() {
+menu_option_02() {
   echo "Install Packages"
 sudo apt install -y wget lm-sensors dos2unix sudo net-tools tasksel git npm neofetch htop xrdp screen iperf3 qemu-guest-agent realmd sssd-tools sssd libnss-sss libpam-sss adcli samba-common zstd apt-transport-https ca-certificates gnupg2 software-properties-common
 }
 
-menu_option_3() {
+menu_option_03() {
   echo "Install Oh-My-Zsh"
 sudo apt install -y zsh
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" && exit
 }
 
-menu_option_4() {
-  echo "Delete olds .zshrc files"
+menu_option_04() {
+  echo "Delete olds .zshrc files (classic user)"
 cd /home/"$USER" 
 sudo rm .zshrc* -f
 ls -la
 }
 
-menu_option_5() {
-  echo "Pull new .zshrc file"
+menu_option_05() {
+  echo "Pull new .zshrc file (classic user)"
 cd /home/"$USER"
 wget https://raw.githubusercontent.com/ElectroFactory/basic_packages/master/.zshrc
 ls -la
 }
 
-menu_option_6() {
-  echo "Find .zshrc file at home directory"
+menu_option_06() {
+  echo "Find .zshrc file at home directory (classic user)"
 cd /home/"$USER" 
 ls -la
 }
 
-menu_option_7() {
+menu_option_07() {
+  echo "Delete olds .zshrc files (root user)"
+cd /root 
+sudo rm .zshrc* -f
+ls -la
+}
+
+menu_option_08() {
+  echo "Pull new .zshrc file (root user)"
+cd /root
+wget https://raw.githubusercontent.com/ElectroFactory/basic_packages/master/.zshrc
+ls -la
+}
+
+menu_option_09() {
+  echo "Find .zshrc file at home directory (root user)"
+cd /root
+ls -la
+}
+
+menu_option_10() {
   echo "Check current folder"
 pwd
 }
 
-menu_option_8() {
+menu_option_11() {
   echo "Reboot"
 sudo reboot
 }
 
-menu_option_9() {
+menu_option_12() {
   echo "Shutdown"
 sudo shutdown now
 }
 
-menu_option_10() {
+menu_option_13() {
   echo "Power off"
 sudo poweroff
 }
@@ -73,33 +93,40 @@ incorrect_selection() {
 until [ "$selection" = "0" ]; do
   clear
   echo ""
-  echo "    	1  -  Update"
-  echo "    	2  -  Install Packages"
-  echo "    	3  -  Install Oh-My-Zsh"
-  echo "    	4  -  Delete olds .zshrc files"
-  echo "    	5  -  Pull new .zshrc file"
-  echo "        6  -  Find .zshrc file at home directory"
-  echo "        7  -  Check current folder"
-  echo "        8  -  Reboot"
-  echo "        9  -  Shutdown"
-  echo "        10 -  Power off"
-  echo "        0  -  Exit"
+  echo "    	01  -  Update"
+  echo "    	02  -  Install Packages"
+  echo "    	03  -  Install Oh-My-Zsh"
+  echo "    	04  -  Delete olds .zshrc files (classic user)"
+  echo "    	05  -  Pull new .zshrc file (classic user)"
+  echo "        06  -  Find .zshrc file at home directory (classic user)"
+  echo "        07  -  Delete olds .zshrc files (root user)"
+  echo "        08  -  Pull new .zshrc file (root user)"
+  echo "        09  -  Find .zshrc file at home directory (root user)"
+  echo "        10 -  Check current folder"
+  echo "        11  -  Reboot"
+  echo "        12  -  Shutdown"
+  echo "        13  -  Power off"
+  echo "        14  -  Exit"
   echo ""
   echo -n "   Enter selection: "
   read selection
   echo ""
+
   case $selection in
-    1 )  clear ; menu_option_1 ; press_enter ;;
-    2 )  clear ; menu_option_2 ; press_enter ;;
-    3 )  clear ; menu_option_3 ; press_enter ;;
-    4 )  clear ; menu_option_4 ; press_enter ;;
-    5 )  clear ; menu_option_5 ; press_enter ;;
-    6 )  clear ; menu_option_6 ; press_enter ;;
-    7 )  clear ; menu_option_7 ; press_enter ;;
-	  8 )  clear ; menu_option_8 ; press_enter ;;
-	  9 )  clear ; menu_option_9 ; press_enter ;;
-	  10 ) clear ; menu_option_10 ; press_enter ;;
-    0 )  clear ; exit ;;
-    * )  clear ; incorrect_selection ; press_enter ;;
+    01 )  clear ; menu_option_01 ; press_enter ;;
+    02 )  clear ; menu_option_02 ; press_enter ;;
+    03 )  clear ; menu_option_03 ; press_enter ;;
+    04 )  clear ; menu_option_04 ; press_enter ;;
+    05 )  clear ; menu_option_05 ; press_enter ;;
+    06 )  clear ; menu_option_06 ; press_enter ;;
+    07 )  clear ; menu_option_07 ; press_enter ;;
+	08 )  clear ; menu_option_08 ; press_enter ;;
+	09 )  clear ; menu_option_09 ; press_enter ;;
+	10 ) clear ; menu_option_10 ; press_enter ;;
+    11 ) clear ; menu_option_10 ; press_enter ;;
+    12 ) clear ; menu_option_10 ; press_enter ;;
+    13 ) clear ; menu_option_10 ; press_enter ;;
+    14 ) clear ; exit ;;
+    *  )  clear ; incorrect_selection ; press_enter ;;
   esac
 done
