@@ -65,18 +65,8 @@ pwd
 }
 
 menu_option_11() {
-  echo "Reboot"
-sudo reboot
-}
-
-menu_option_12() {
-  echo "Shutdown"
-sudo shutdown now
-}
-
-menu_option_13() {
-  echo "Power off"
-sudo poweroff
+  echo "Autorize ssh login as root"
+sed -i "s/#PermitRootLogin prohibit-password/PermitRootLogin yes/g" /etc/ssh/sshd_config
 }
 
 press_enter() {
@@ -103,10 +93,8 @@ until [ "$selection" = "0" ]; do
   echo "        08  -  Pull new .zshrc file (root user)"
   echo "        09  -  Find .zshrc file at home directory (root user)"
   echo "        10  -  Check current folder"
-  echo "        11  -  Reboot"
-  echo "        12  -  Shutdown"
-  echo "        13  -  Power off"
-  echo "        14  -  Exit"
+  echo "        11  -  Autorize ssh login as root"
+  echo "        00  -  Exit"
   echo ""
   echo -n "   Enter selection: "
   read selection
@@ -123,10 +111,8 @@ until [ "$selection" = "0" ]; do
     08 )  clear ; menu_option_08 ; press_enter ;;
     09 )  clear ; menu_option_09 ; press_enter ;;
     10 )  clear ; menu_option_10 ; press_enter ;;
-    11 )  clear ; menu_option_10 ; press_enter ;;
-    12 )  clear ; menu_option_10 ; press_enter ;;
-    13 )  clear ; menu_option_10 ; press_enter ;;
-    14 )  clear ; exit ;;
+    11 )  clear ; menu_option_11 ; press_enter ;;
+    00 )  clear ; exit ;;
     *  )  clear ; incorrect_selection ; press_enter ;;
   esac
 done
