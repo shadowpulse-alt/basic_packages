@@ -66,7 +66,7 @@ pwd
 
 menu_option_11() {
   echo "Autorize ssh login as root"
-sed -i "s/#PermitRootLogin prohibit-password/PermitRootLogin yes/g" && /etc/ssh/sshd_config
+sed -i "s/#PermitRootLogin prohibit-password/PermitRootLogin yes/g" && cat /etc/ssh/sshd_config
 }
 
 press_enter() {
