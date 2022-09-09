@@ -120,7 +120,7 @@ until [ "$selection" = "0" ]; do
     09 )  clear ; menu_option_09 ; press_enter ;;
     10 )  clear ; menu_option_10 ; press_enter ;;
     11 )  clear ; menu_option_11 ; press_enter ;;
-    12 )  clear ; menu_option_11 ; press_enter ;;
+    12 )  clear ; menu_option_12 ; press_enter ;;
     00 )  clear ; exit ;;
     *  )  clear ; incorrect_selection ; press_enter ;;
   esac
