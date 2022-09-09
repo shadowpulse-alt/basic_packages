@@ -70,6 +70,12 @@ sed -i "s/#PermitRootLogin prohibit-password/PermitRootLogin yes/g" /etc/ssh/ssh
 sed -n 32p /etc/ssh/sshd_config
 }
 
+menu_option_12() {
+  echo "Install nala-legacy"
+wget -qO- https://deb.volian.org/volian/scar.key | gpg --dearmor | dd of=/usr/share/keyrings/volian-archive-scar.gpg && echo "deb [signed-by=/usr/share/keyrings/volian-archive-scar.gpg arch=amd64] https://deb.volian.org/volian/ scar main" > /etc/apt/sources.list.d/volian-archive-scar.list && apt update && apt install -y nala-legacy
+}
+
+
 press_enter() {
   echo ""
   echo -n "      Press Enter to continue "
@@ -95,6 +101,7 @@ until [ "$selection" = "0" ]; do
   echo "        09  -  Find .zshrc file at home directory (root user)"
   echo "        10  -  Check current folder"
   echo "        11  -  Autorize ssh login as root"
+  echo "        12  -  Install nala-legacy"
   echo "        00  -  Exit"
   echo ""
   echo -n "   Enter selection: "
@@ -113,6 +120,7 @@ until [ "$selection" = "0" ]; do
     09 )  clear ; menu_option_09 ; press_enter ;;
     10 )  clear ; menu_option_10 ; press_enter ;;
     11 )  clear ; menu_option_11 ; press_enter ;;
+    12 )  clear ; menu_option_11 ; press_enter ;;
     00 )  clear ; exit ;;
     *  )  clear ; incorrect_selection ; press_enter ;;
   esac
