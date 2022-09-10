@@ -10,7 +10,7 @@ apt full-upgrade -y
 
 menu_option_02() {
   echo "Install Packages"
-sudo apt install -y nala-legacy cifs-utils wget lm-sensors dos2unix sudo net-tools tasksel git npm neofetch htop xrdp screen iperf3 qemu-guest-agent realmd sssd-tools sssd libnss-sss libpam-sss adcli samba-common zstd apt-transport-https ca-certificates gnupg2 software-properties-common
+sudo apt install -y cifs-utils wget lm-sensors dos2unix sudo net-tools tasksel git npm neofetch htop xrdp screen iperf3 qemu-guest-agent realmd sssd-tools sssd libnss-sss libpam-sss adcli samba-common zstd apt-transport-https ca-certificates gnupg2 software-properties-common
 }
 
 menu_option_03() {
