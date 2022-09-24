@@ -73,6 +73,9 @@ sed -n 32p /etc/ssh/sshd_config
 menu_option_12() {
   echo "Install nala-legacy"
 wget -qO- https://deb.volian.org/volian/scar.key | gpg --dearmor | dd of=/usr/share/keyrings/volian-archive-scar.gpg && echo "deb [signed-by=/usr/share/keyrings/volian-archive-scar.gpg arch=amd64] https://deb.volian.org/volian/ scar main" > /etc/apt/sources.list.d/volian-archive-scar.list && export LC_ALL=C.UTF-8 && export LANG=C.UTF-8 && apt update && apt install -y nala-legacy
+export LC_ALL=C.UTF-8
+export LANG=C.UTF-8
+nala update
 }
 
 
