@@ -68,6 +68,7 @@ menu_option_11() {
   echo "Autorize ssh login as root"
 sed -i "s/#PermitRootLogin prohibit-password/PermitRootLogin yes/g" /etc/ssh/sshd_config
 sed -n 32p /etc/ssh/sshd_config
+systemctl restart sshd
 }
 
 menu_option_12() {
