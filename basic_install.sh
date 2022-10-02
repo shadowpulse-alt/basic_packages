@@ -74,8 +74,8 @@ sudo systemctl restart sshd
 menu_option_12() {
   echo "Install nala-legacy"
 sudo wget -qO- https://deb.volian.org/volian/scar.key | gpg --dearmor | dd of=/usr/share/keyrings/volian-archive-scar.gpg && sudo echo "deb [signed-by=/usr/share/keyrings/volian-archive-scar.gpg arch=amd64] https://deb.volian.org/volian/ scar main" > /etc/apt/sources.list.d/volian-archive-scar.list && sudo apt update && sudo apt install -y nala-legacy
-sudo export LC_ALL=C.UTF-8
-sudo export LANG=C.UTF-8
+export LC_ALL=C.UTF-8
+export LANG=C.UTF-8
 sudo nala update
 }
 
