@@ -66,17 +66,17 @@ pwd
 
 menu_option_11() {
   echo "Autorize ssh login as root"
-sed -i "s/#PermitRootLogin prohibit-password/PermitRootLogin yes/g" /etc/ssh/sshd_config
-sed -n 32p /etc/ssh/sshd_config
-systemctl restart sshd
+sudo sed -i "s/#PermitRootLogin prohibit-password/PermitRootLogin yes/g" /etc/ssh/sshd_config
+sudo sed -n 32p /etc/ssh/sshd_config
+sudo systemctl restart sshd
 }
 
 menu_option_12() {
   echo "Install nala-legacy"
-wget -qO- https://deb.volian.org/volian/scar.key | gpg --dearmor | dd of=/usr/share/keyrings/volian-archive-scar.gpg && echo "deb [signed-by=/usr/share/keyrings/volian-archive-scar.gpg arch=amd64] https://deb.volian.org/volian/ scar main" > /etc/apt/sources.list.d/volian-archive-scar.list && export LC_ALL=C.UTF-8 && export LANG=C.UTF-8 && apt update && apt install -y nala-legacy
-export LC_ALL=C.UTF-8
-export LANG=C.UTF-8
-nala update
+sudo wget -qO- https://deb.volian.org/volian/scar.key | gpg --dearmor | dd of=/usr/share/keyrings/volian-archive-scar.gpg && sudo echo "deb [signed-by=/usr/share/keyrings/volian-archive-scar.gpg arch=amd64] https://deb.volian.org/volian/ scar main" > /etc/apt/sources.list.d/volian-archive-scar.list && sudo apt update && sudo apt install -y nala-legacy
+sudo export LC_ALL=C.UTF-8
+sudo export LANG=C.UTF-8
+sudo nala update
 }
 
 
