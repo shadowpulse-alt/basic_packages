@@ -83,15 +83,15 @@ sudo nala update
 
 menu_option_13() {
 echo "Pull zabbix-agent configuration file"
-if [ -f "/etc/zabbix/zabbix_agentd.conf" ];then
+	if [ -f "/etc/zabbix/zabbix_agentd.conf" ];then
         echo "Le fichier de configuration existe !";
         rm /etc/zabbix/zabbix_agentd.conf
         cd /etc/zabbix
-	echo "Pull file"
-wget https://raw.githubusercontent.com/ElectroFactory/basic_packages/master/zabbix_agentd.conf
-  #echo "Configure hostname into configuration file"
-sudo sed -i "s/# Hostname=/Hostname=$HOSTNAME/g" /etc/zabbix/zabbix_agentd.conf
-sudo sed -n 145p /etc/zabbix/zabbix_agentd.conf
+echo "Pull file"
+        wget https://raw.githubusercontent.com/ElectroFactory/basic_packages/master/zabbix_agentd.conf
+echo "Configure hostname into configuration file"
+	sudo sed -i "s/Hostname=/Hostname=$HOSTNAME/g" /etc/zabbix/zabbix_agentd.conf
+	sudo sed -n 146p /etc/zabbix/zabbix_agentd.conf
 fi
 }
 
