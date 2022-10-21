@@ -1,156 +1,391 @@
-#!/bin/bash
 
-echo "Basic packages installer V3.7.1"
+# This is a configuration file for Zabbix agent daemon (Unix)
+# To get more information about Zabbix, visit http://www.zabbix.com
 
-menu_option_01() {
-  echo "Update"
-sudo apt update
-apt full-upgrade -y
-}
+############ GENERAL PARAMETERS #################
 
-menu_option_02() {
-  echo "Install Packages"
-sudo apt install -y zsh-common zsh-doc cifs-utils zabbix-agent wget lm-sensors sshpass dos2unix sudo net-tools tasksel git npm neofetch htop xrdp screen iperf3 qemu-guest-agent realmd sssd-tools sssd libnss-sss libpam-sss adcli samba-common zstd apt-transport-https ca-certificates gnupg2 software-properties-common
-sudo systemctl enable zabbix-agent
-sudo systemctl start zabbix-agent
-}
+### Option: PidFile
+#	Name of PID file.
+#
+# Mandatory: no
+# Default:
+# PidFile=/tmp/zabbix_agentd.pid
 
-menu_option_03() {
-  echo "Install Oh-My-Zsh"
-sudo apt install -y zsh
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" && exit
-}
+PidFile=/var/run/zabbix/zabbix_agentd.pid
 
-menu_option_04() {
-  echo "Delete olds .zshrc files (classic user)"
-cd /home/"$USER" 
-sudo rm .zshrc* -f
-ls -la
-}
+### Option: LogType
+#	Specifies where log messages are written to:
+#		system  - syslog
+#		file    - file specified with LogFile parameter
+#		console - standard output
+#
+# Mandatory: no
+# Default:
+# LogType=file
 
-menu_option_05() {
-  echo "Pull new .zshrc file (classic user)"
-cd /home/"$USER"
-wget https://raw.githubusercontent.com/ElectroFactory/basic_packages/master/.zshrc
-ls -la
-}
+### Option: LogFile
+#	Log file name for LogType 'file' parameter.
+#
+# Mandatory: no
+# Default:
+# LogFile=
 
-menu_option_06() {
-  echo "Find .zshrc file at home directory (classic user)"
-cd /home/"$USER" 
-ls -la
-}
+LogFile=/var/log/zabbix-agent/zabbix_agentd.log
 
-menu_option_07() {
-  echo "Delete olds .zshrc files (root user)"
-cd /root 
-sudo rm .zshrc* -f
-ls -la
-}
+### Option: LogFileSize
+#	Maximum size of log file in MB.
+#	0 - disable automatic log rotation.
+#
+# Mandatory: no
+# Range: 0-1024
+# Default:
+# LogFileSize=1
 
-menu_option_08() {
-  echo "Pull new .zshrc file (root user)"
-cd /root
-wget https://raw.githubusercontent.com/ElectroFactory/basic_packages/master/.zshrc
-ls -la
-}
+LogFileSize=0
 
-menu_option_09() {
-  echo "Find .zshrc file at home directory (root user)"
-cd /root
-ls -la
-}
+### Option: DebugLevel
+#	Specifies debug level:
+#	0 - basic information about starting and stopping of Zabbix processes
+#	1 - critical information
+#	2 - error information
+#	3 - warnings
+#	4 - for debugging (produces lots of information)
+#	5 - extended debugging (produces even more information)
+#
+# Mandatory: no
+# Range: 0-5
+# Default:
+# DebugLevel=3
 
-menu_option_10() {
-  echo "Check current folder"
-pwd
-}
+### Option: SourceIP
+#	Source IP address for outgoing connections.
+#
+# Mandatory: no
+# Default:
+# SourceIP=
 
-menu_option_11() {
-  echo "Autorize ssh login as root"
-sudo sed -i "s/#PermitRootLogin prohibit-password/PermitRootLogin yes/g" /etc/ssh/sshd_config
-sudo sed -n 32p /etc/ssh/sshd_config
-sudo systemctl restart sshd
-}
+### Option: EnableRemoteCommands
+#	Whether remote commands from Zabbix server are allowed.
+#	0 - not allowed
+#	1 - allowed
+#
+# Mandatory: no
+# Default:
+# EnableRemoteCommands=0
 
-menu_option_12() {
-  echo "Install nala-legacy"
-sudo wget -qO- https://deb.volian.org/volian/scar.key | gpg --dearmor | dd of=/usr/share/keyrings/volian-archive-scar.gpg && sudo echo "deb [signed-by=/usr/share/keyrings/volian-archive-scar.gpg arch=amd64] https://deb.volian.org/volian/ scar main" > /etc/apt/sources.list.d/volian-archive-scar.list && sudo apt update && sudo apt install -y nala-legacy
-export LC_ALL=C.UTF-8
-export LANG=C.UTF-8
-sudo nala update
-}
+### Option: LogRemoteCommands
+#	Enable logging of executed shell commands as warnings.
+#	0 - disabled
+#	1 - enabled
+#
+# Mandatory: no
+# Default:
+# LogRemoteCommands=0
 
-menu_option_13() {
-echo "Pull zabbix-agent configuration file"
-if [ -f "/etc/zabbix/zabbix_agentd.conf" ];then
-        echo "Le fichier de configuration existe !";
-        rm /etc/zabbix/zabbix_agentd.conf
-        cd /etc/zabbix
-	echo "Pull file"
-        wget https://raw.githubusercontent.com/ElectroFactory/basic_packages/master/zabbix_agentd.conf
-        systemctl restart zabbix-agent
-fi
-}
+##### Passive checks related
 
-menu_option_14() {
-  echo "Show hostname"
-cat /proc/sys/kernel/hostname
-}
+### Option: Server
+#	List of comma delimited IP addresses (or hostnames) of Zabbix servers.
+#	Incoming connections will be accepted only from the hosts listed here.
+#	If IPv6 support is enabled then '127.0.0.1', '::127.0.0.1', '::ffff:127.0.0.1' are treated equally.
+#
+# Mandatory: no
+# Default:
+# Server=
 
+Server=192.168.1.124
 
+### Option: ListenPort
+#	Agent will listen on this port for connections from the server.
+#
+# Mandatory: no
+# Range: 1024-32767
+# Default:
+# ListenPort=10050
 
+### Option: ListenIP
+#	List of comma delimited IP addresses that the agent should listen on.
+#	First IP address is sent to Zabbix server if connecting to it to retrieve list of active checks.
+#
+# Mandatory: no
+# Default:
+# ListenIP=0.0.0.0
 
-press_enter() {
-  echo ""
-  echo -n "      Press Enter to continue "
-  read
-  clear
-}
+### Option: StartAgents
+#	Number of pre-forked instances of zabbix_agentd that process passive checks.
+#	If set to 0, disables passive checks and the agent will not listen on any TCP port.
+#
+# Mandatory: no
+# Range: 0-100
+# Default:
+# StartAgents=3
 
-incorrect_selection() {
-  echo "Incorrect selection! Try again."
-}
+##### Active checks related
 
-until [ "$selection" = "0" ]; do
-  clear
-  echo ""
-  echo "        01  -  Update"
-  echo "        02  -  Install Packages"
-  echo "        03  -  Install Oh-My-Zsh"
-  echo "        04  -  Delete olds .zshrc files (classic user)"
-  echo "        05  -  Pull new .zshrc file (classic user)"
-  echo "        06  -  Find .zshrc file at home directory (classic user)"
-  echo "        07  -  Delete olds .zshrc files (root user)"
-  echo "        08  -  Pull new .zshrc file (root user)"
-  echo "        09  -  Find .zshrc file at home directory (root user)"
-  echo "        10  -  Check current folder"
-  echo "        11  -  Autorize ssh login as root"
-  echo "        12  -  Install nala-legacy"
-  echo "        13  -  Pull zabbix-agent configuration file"
-  echo "        14  -  Show hostname"
-  echo "        00  -  Exit"
-  echo ""
-  echo -n "   Enter selection: "
-  read selection
-  echo ""
+### Option: ServerActive
+#	List of comma delimited IP:port (or hostname:port) pairs of Zabbix servers for active checks.
+#	If port is not specified, default port is used.
+#	IPv6 addresses must be enclosed in square brackets if port for that host is specified.
+#	If port is not specified, square brackets for IPv6 addresses are optional.
+#	If this parameter is not specified, active checks are disabled.
+#	Example: ServerActive=127.0.0.1:20051,zabbix.domain,[::1]:30051,::1,[12fc::1]
+#
+# Mandatory: no
+# Default:
+# ServerActive=
 
-  case $selection in
-    01 )  clear ; menu_option_01 ; press_enter ;;
-    02 )  clear ; menu_option_02 ; press_enter ;;
-    03 )  clear ; menu_option_03 ; press_enter ;;
-    04 )  clear ; menu_option_04 ; press_enter ;;
-    05 )  clear ; menu_option_05 ; press_enter ;;
-    06 )  clear ; menu_option_06 ; press_enter ;;
-    07 )  clear ; menu_option_07 ; press_enter ;;
-    08 )  clear ; menu_option_08 ; press_enter ;;
-    09 )  clear ; menu_option_09 ; press_enter ;;
-    10 )  clear ; menu_option_10 ; press_enter ;;
-    11 )  clear ; menu_option_11 ; press_enter ;;
-    12 )  clear ; menu_option_12 ; press_enter ;;
-    13 )  clear ; menu_option_13 ; press_enter ;;
-    14 )  clear ; menu_option_14 ; press_enter ;;
-    00 )  clear ; exit ;;
-    *  )  clear ; incorrect_selection ; press_enter ;;
-    esac
- done
+ServerActive=192.168.1.124
+
+### Option: Hostname
+#	Unique, case sensitive hostname.
+#	Required for active checks and must match hostname as configured on the server.
+#	Value is acquired from HostnameItem if undefined.
+#
+# Mandatory: no
+# Default:
+# Hostname=
+
+### Option: HostnameItem
+#	Item used for generating Hostname if it is undefined. Ignored if Hostname is defined.
+#	Does not support UserParameters or aliases.
+#
+# Mandatory: no
+# Default:
+# HostnameItem=system.hostname
+
+### Option: HostMetadata
+#	Optional parameter that defines host metadata.
+#	Host metadata is used at host auto-registration process.
+#	An agent will issue an error and not start if the value is over limit of 255 characters.
+#	If not defined, value will be acquired from HostMetadataItem.
+#
+# Mandatory: no
+# Range: 0-255 characters
+# Default:
+# HostMetadata=
+
+### Option: HostMetadataItem
+#	Optional parameter that defines an item used for getting host metadata.
+#	Host metadata is used at host auto-registration process.
+#	During an auto-registration request an agent will log a warning message if
+#	the value returned by specified item is over limit of 255 characters.
+#	This option is only used when HostMetadata is not defined.
+#
+# Mandatory: no
+# Default:
+# HostMetadataItem=
+
+### Option: RefreshActiveChecks
+#	How often list of active checks is refreshed, in seconds.
+#
+# Mandatory: no
+# Range: 60-3600
+# Default:
+# RefreshActiveChecks=120
+
+### Option: BufferSend
+#	Do not keep data longer than N seconds in buffer.
+#
+# Mandatory: no
+# Range: 1-3600
+# Default:
+# BufferSend=5
+
+### Option: BufferSize
+#	Maximum number of values in a memory buffer. The agent will send
+#	all collected data to Zabbix Server or Proxy if the buffer is full.
+#
+# Mandatory: no
+# Range: 2-65535
+# Default:
+# BufferSize=100
+
+### Option: MaxLinesPerSecond
+#	Maximum number of new lines the agent will send per second to Zabbix Server
+#	or Proxy processing 'log' and 'logrt' active checks.
+#	The provided value will be overridden by the parameter 'maxlines',
+#	provided in 'log' or 'logrt' item keys.
+#
+# Mandatory: no
+# Range: 1-1000
+# Default:
+# MaxLinesPerSecond=20
+
+############ ADVANCED PARAMETERS #################
+
+### Option: Alias
+#	Sets an alias for an item key. It can be used to substitute long and complex item key with a smaller and simpler one.
+#	Multiple Alias parameters may be present. Multiple parameters with the same Alias key are not allowed.
+#	Different Alias keys may reference the same item key.
+#	For example, to retrieve the ID of user 'zabbix':
+#	Alias=zabbix.userid:vfs.file.regexp[/etc/passwd,^zabbix:.:([0-9]+),,,,\1]
+#	Now shorthand key zabbix.userid may be used to retrieve data.
+#	Aliases can be used in HostMetadataItem but not in HostnameItem parameters.
+#
+# Mandatory: no
+# Range:
+# Default:
+
+### Option: Timeout
+#	Spend no more than Timeout seconds on processing
+#
+# Mandatory: no
+# Range: 1-30
+# Default:
+# Timeout=3
+
+### Option: AllowRoot
+#	Allow the agent to run as 'root'. If disabled and the agent is started by 'root', the agent
+#	will try to switch to the user specified by the User configuration option instead.
+#	Has no effect if started under a regular user.
+#	0 - do not allow
+#	1 - allow
+#
+# Mandatory: no
+# Default:
+# AllowRoot=0
+
+### Option: User
+#	Drop privileges to a specific, existing user on the system.
+#	Only has effect if run as 'root' and AllowRoot is disabled.
+#
+# Mandatory: no
+# Default:
+# User=zabbix
+
+### Option: Include
+#	You may include individual files or all files in a directory in the configuration file.
+#	Installing Zabbix will create include directory in /etc/zabbix, unless modified during the compile time.
+#
+# Mandatory: no
+# Default:
+# Include=
+
+# Include=/etc/zabbix/zabbix_agentd.userparams.conf
+# Include=/etc/zabbix/zabbix_agentd.conf.d/
+Include=/etc/zabbix/zabbix_agentd.conf.d/*.conf
+
+####### USER-DEFINED MONITORED PARAMETERS #######
+
+### Option: UnsafeUserParameters
+#	Allow all characters to be passed in arguments to user-defined parameters.
+#	The following characters are not allowed:
+#	\ ' " ` * ? [ ] { } ~ $ ! & ; ( ) < > | # @
+#	Additionally, newline characters are not allowed.
+#	0 - do not allow
+#	1 - allow
+#
+# Mandatory: no
+# Range: 0-1
+# Default:
+# UnsafeUserParameters=0
+
+### Option: UserParameter
+#	User-defined parameter to monitor. There can be several user-defined parameters.
+#	Format: UserParameter=<key>,<shell command>
+#	See 'zabbix_agentd' directory for examples.
+#
+# Mandatory: no
+# Default:
+# UserParameter=
+
+####### LOADABLE MODULES #######
+
+### Option: LoadModulePath
+#	Full path to location of agent modules.
+#	Default depends on compilation options.
+#
+# Mandatory: no
+# Default:
+# LoadModulePath=${libdir}/modules
+
+### Option: LoadModule
+#	Module to load at agent startup. Modules are used to extend functionality of the agent.
+#	Format: LoadModule=<module.so>
+#	The modules must be located in directory specified by LoadModulePath.
+#	It is allowed to include multiple LoadModule parameters.
+#
+# Mandatory: no
+# Default:
+# LoadModule=
+
+####### TLS-RELATED PARAMETERS #######
+
+### Option: TLSConnect
+#	How the agent should connect to server or proxy. Used for active checks.
+#	Only one value can be specified:
+#		unencrypted - connect without encryption
+#		psk         - connect using TLS and a pre-shared key
+#		cert        - connect using TLS and a certificate
+#
+# Mandatory: yes, if TLS certificate or PSK parameters are defined (even for 'unencrypted' connection)
+# Default:
+# TLSConnect=unencrypted
+
+### Option: TLSAccept
+#	What incoming connections to accept.
+#	Multiple values can be specified, separated by comma:
+#		unencrypted - accept connections without encryption
+#		psk         - accept connections secured with TLS and a pre-shared key
+#		cert        - accept connections secured with TLS and a certificate
+#
+# Mandatory: yes, if TLS certificate or PSK parameters are defined (even for 'unencrypted' connection)
+# Default:
+# TLSAccept=unencrypted
+
+### Option: TLSCAFile
+#	Full pathname of a file containing the top-level CA(s) certificates for
+#	peer certificate verification.
+#
+# Mandatory: no
+# Default:
+# TLSCAFile=
+
+### Option: TLSCRLFile
+#	Full pathname of a file containing revoked certificates.
+#
+# Mandatory: no
+# Default:
+# TLSCRLFile=
+
+### Option: TLSServerCertIssuer
+#      Allowed server certificate issuer.
+#
+# Mandatory: no
+# Default:
+# TLSServerCertIssuer=
+
+### Option: TLSServerCertSubject
+#      Allowed server certificate subject.
+#
+# Mandatory: no
+# Default:
+# TLSServerCertSubject=
+
+### Option: TLSCertFile
+#	Full pathname of a file containing the agent certificate or certificate chain.
+#
+# Mandatory: no
+# Default:
+# TLSCertFile=
+
+### Option: TLSKeyFile
+#	Full pathname of a file containing the agent private key.
+#
+# Mandatory: no
+# Default:
+# TLSKeyFile=
+
+### Option: TLSPSKIdentity
+#	Unique, case sensitive string used to identify the pre-shared key.
+#
+# Mandatory: no
+# Default:
+# TLSPSKIdentity=
+
+### Option: TLSPSKFile
+#	Full pathname of a file containing the pre-shared key.
+#
+# Mandatory: no
+# Default:
+# TLSPSKFile=
