@@ -88,9 +88,7 @@ echo "Pull zabbix-agent configuration file"
         rm /etc/zabbix/zabbix_agentd.conf
         fi
         echo "Pull file"
-        cd /root
-        wget https://raw.githubusercontent.com/ElectroFactory/basic_packages/master/zabbix_agentd.conf
-        mv /root/zabbix_agentd.conf /etc/zabbix/zabbix_agentd.conf
+        wget -O /etc/zabbix/zabbix_agentd.conf https://raw.githubusercontent.com/ElectroFactory/basic_packages/master/zabbix_agentd.conf
         echo "Configure hostname into configuration file"
 	      sudo sed -i "s/Hostname=/Hostname=$HOSTNAME/g" /etc/zabbix/zabbix_agentd.conf
 	      sudo sed -n 146p /etc/zabbix/zabbix_agentd.conf
