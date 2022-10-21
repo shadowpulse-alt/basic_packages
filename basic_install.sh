@@ -91,8 +91,6 @@ if [ -f "/etc/zabbix/zabbix_agentd.conf" ];then
         wget https://raw.githubusercontent.com/ElectroFactory/basic_packages/master/zabbix_agentd.conf
         #systemctl restart zabbix-agent
   #echo "Configure hostname into configuration file"
-        #sudo sed -i "s/# Hostname= /Hostname=/g" /etc/zabbix/zabbix_agentd.conf
-        #sudo sed -n 32p /etc/zabbix/zabbix_agentd.conf
 fi
 }
 
