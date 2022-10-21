@@ -84,6 +84,7 @@ menu_option_13() {
   cd /etc/zabbix
   wget https://raw.githubusercontent.com/ElectroFactory/basic_packages/master/zabbix_agentd.conf
   ls -la
+}
   
   
   
@@ -138,4 +139,4 @@ until [ "$selection" = "0" ]; do
     00 )  clear ; exit ;;
     *  )  clear ; incorrect_selection ; press_enter ;;
     esac
-  done
+ done
