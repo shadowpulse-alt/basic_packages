@@ -88,9 +88,10 @@ if [ -f "/etc/zabbix/zabbix_agentd.conf" ];then
         rm /etc/zabbix/zabbix_agentd.conf
         cd /etc/zabbix
 	echo "Pull file"
-        wget https://raw.githubusercontent.com/ElectroFactory/basic_packages/master/zabbix_agentd.conf
-        #systemctl restart zabbix-agent
+wget https://raw.githubusercontent.com/ElectroFactory/basic_packages/master/zabbix_agentd.conf
   #echo "Configure hostname into configuration file"
+sudo sed -i "s/# Hostname=/Hostname=$HOSTNAME/g" /etc/zabbix/zabbix_agentd.conf
+sudo sed -n 145p /etc/zabbix/zabbix_agentd.conf
 fi
 }
 
