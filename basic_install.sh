@@ -11,6 +11,8 @@ apt full-upgrade -y
 menu_option_02() {
   echo "Install Packages"
 sudo apt install -y zsh-common zsh-doc cifs-utils zabbix-agent wget lm-sensors sshpass dos2unix sudo net-tools tasksel git npm neofetch htop xrdp screen iperf3 qemu-guest-agent realmd sssd-tools sssd libnss-sss libpam-sss adcli samba-common zstd apt-transport-https ca-certificates gnupg2 software-properties-common
+sudo systemctl enable zabbix-agent
+sudo systemctl start zabbix-agent
 }
 
 menu_option_03() {
