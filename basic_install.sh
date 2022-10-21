@@ -1,7 +1,5 @@
 #!/bin/bash
 
-echo "Basic packages installer V3.7.1"
-
 menu_option_01() {
   echo "Update"
 sudo apt update
@@ -81,12 +79,10 @@ sudo nala update
 
 menu_option_13() {
   echo"Pull zabbix-agent configuration file"
-  cd /etc/zabbix
-  wget https://raw.githubusercontent.com/ElectroFactory/basic_packages/master/zabbix_agentd.conf
-  ls -la
-  
-  
-  
+cd /etc/zabbix
+wget https://raw.githubusercontent.com/ElectroFactory/basic_packages/master/zabbix_agentd.conf
+ls -la
+
 
 press_enter() {
   echo ""
