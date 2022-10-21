@@ -82,8 +82,13 @@ sudo nala update
 menu_option_13() {
   echo"Pull zabbix-agent configuration file"
   cd /etc/zabbix
+  echo"Pull file"
   wget https://raw.githubusercontent.com/ElectroFactory/basic_packages/master/zabbix_agentd.conf
   ls -la
+  echo"enable zabbix-agent service"
+  systemctl enable zabbix-agent
+  echo"starting zabbix-agent service"
+  systemctl start zabbix-agent  
 }
   
   
