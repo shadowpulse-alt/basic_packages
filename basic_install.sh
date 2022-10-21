@@ -91,6 +91,11 @@ if [ -f "/etc/zabbix/zabbix_agentd.conf" ];then
 fi
 }
 
+menu_option_14() {
+  echo "Show hostname"
+hostname
+}
+
 
 
 
@@ -121,6 +126,7 @@ until [ "$selection" = "0" ]; do
   echo "        11  -  Autorize ssh login as root"
   echo "        12  -  Install nala-legacy"
   echo "        13  -  Pull zabbix-agent configuration file"
+  echo "        14  -  Show hostname"
   echo "        00  -  Exit"
   echo ""
   echo -n "   Enter selection: "
