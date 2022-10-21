@@ -93,7 +93,7 @@ fi
 
 menu_option_14() {
   echo "Show hostname"
-hostname
+cat /proc/sys/kernel/hostname
 }
 
 
