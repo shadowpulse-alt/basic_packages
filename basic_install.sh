@@ -79,6 +79,10 @@ export LANG=C.UTF-8
 sudo nala update
 }
 
+menu_option_13() {
+  echo"Pull zabbix-agent configuration file"
+
+
 
 press_enter() {
   echo ""
