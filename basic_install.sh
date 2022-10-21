@@ -81,8 +81,12 @@ sudo nala update
 
 menu_option_13() {
   echo"Pull zabbix-agent configuration file"
-
-
+  cd /etc/zabbix
+  wget https://raw.githubusercontent.com/ElectroFactory/basic_packages/master/zabbix_agentd.conf
+  ls -la
+  
+  
+  
 
 press_enter() {
   echo ""
@@ -110,6 +114,7 @@ until [ "$selection" = "0" ]; do
   echo "        10  -  Check current folder"
   echo "        11  -  Autorize ssh login as root"
   echo "        12  -  Install nala-legacy"
+  echo "        13  -  Pull zabbix-agent configuration file"
   echo "        00  -  Exit"
   echo ""
   echo -n "   Enter selection: "
@@ -129,6 +134,7 @@ until [ "$selection" = "0" ]; do
     10 )  clear ; menu_option_10 ; press_enter ;;
     11 )  clear ; menu_option_11 ; press_enter ;;
     12 )  clear ; menu_option_12 ; press_enter ;;
+    13 )  clear ; menu_option_13 ; press_enter ;;
     00 )  clear ; exit ;;
     *  )  clear ; incorrect_selection ; press_enter ;;
   esac
