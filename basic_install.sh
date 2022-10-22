@@ -92,15 +92,16 @@ echo "Pull zabbix-agent configuration file"
         echo "Pull file"
         wget -O /etc/zabbix/zabbix_agentd.conf https://raw.githubusercontent.com/ElectroFactory/basic_packages/master/zabbix_agentd.conf
         
-        echo "Configure hostname into configuration file"
+        echo "Manual configuration of hostname"
 	      echo "-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*"
 	      echo ""
-	      sudo sed -i "s/Hostname=/Hostname=$HOSTNAME/g" /etc/zabbix/zabbix_agentd.conf
+	      read -p "Enter Server IP : " HOSTNAME
+	      sudo sed -i "s/Server=/Server=$HOSTNAME/g" /etc/zabbix/zabbix_agentd.conf
 	      sudo sed -n 145p /etc/zabbix/zabbix_agentd.conf
 	      echo ""
               echo "-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*"
 
-        echo "Configure Server IP into configuration file"
+        echo "Manual configuration of Server IP"
 	      echo "-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*"
 	      echo ""
               read -p "Enter Server IP : " Server_IP
@@ -109,7 +110,7 @@ echo "Pull zabbix-agent configuration file"
 	      echo ""
               echo "-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*"
 
-        echo "Configure ServerActive IP into configuration file"
+        echo "Manual configuration of ServerActive IP"
 	      echo ""
 	      echo "-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*"
 	      echo ""
