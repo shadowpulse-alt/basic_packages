@@ -94,7 +94,7 @@ echo "Pull zabbix-agent configuration file"
         
         echo "Configure hostname into configuration file"
 	      sudo sed -i "s/Hostname=/Hostname=$HOSTNAME/g" /etc/zabbix/zabbix_agentd.conf
-	      sudo sed -n 140p /etc/zabbix/zabbix_agentd.conf
+	      sudo sed -n 145p /etc/zabbix/zabbix_agentd.conf
 
         echo "Configure Server IP into configuration file"
               read -p "Enter Server IP : " Server_IP
