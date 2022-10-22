@@ -90,7 +90,7 @@ echo "Install zabbix-agent for linux"
         echo "Le fichier de configuration existe !";
 	sudo systemctl stop zabbix-agent
         rm /etc/zabbix/zabbix_agentd.conf
-        
+
         fi
 
         wget -O /etc/zabbix/zabbix_agentd.conf https://raw.githubusercontent.com/ElectroFactory/basic_packages/master/zabbix_agentd.conf
@@ -154,7 +154,7 @@ until [ "$selection" = "0" ]; do
   echo "        10  -  Check current folder"
   echo "        11  -  Autorize ssh login as root"
   echo "        12  -  Install nala-legacy"
-  echo "        13  -  Pull zabbix-agent configuration file"
+  echo "        13  -  Install zabbix-agent for linux"
   echo "        14  -  Show hostname"
   echo "        00  -  Exit"
   echo ""
