@@ -84,14 +84,15 @@ echo "Install nala-legacy"
 menu_option_13() {
 echo "Pull zabbix-agent configuration file"
 	if [ -f "/etc/zabbix/zabbix_agentd.conf" ];then
-        
+
         echo "Le fichier de configuration existe !";
+	sudo systemctl stop zabbix-agent
         rm /etc/zabbix/zabbix_agentd.conf
         fi
-        
+
         echo "Pull file"
         wget -O /etc/zabbix/zabbix_agentd.conf https://raw.githubusercontent.com/ElectroFactory/basic_packages/master/zabbix_agentd.conf
-        
+
         echo "Manual configuration of hostname"
 	      read -p "Enter Hostname : " HOSTNAME
 	      sudo sed -i "s/Hostname=/Hostname=$HOSTNAME/g" /etc/zabbix/zabbix_agentd.conf
@@ -106,8 +107,7 @@ echo "Pull zabbix-agent configuration file"
               read -p "Enter ServerActive IP : " Server_Active_IP
 	      sudo sed -i "s/ServerActive=/ServerActive=$Server_Active_IP/g" /etc/zabbix/zabbix_agentd.conf
 	      sudo sed -n 135p /etc/zabbix/zabbix_agentd.conf
-
-        sudo systemctl restart zabbix-agent
+	      sudo systemctl start zabbix-agent
 }
 
 menu_option_14() {
