@@ -116,6 +116,7 @@ echo "Install zabbix-agent for linux"
 	      sudo sed -i "s/ServerActive=/ServerActive=$Server_Active_IP/g" /etc/zabbix/zabbix_agentd.conf
 	      sudo sed -n 135p /etc/zabbix/zabbix_agentd.conf
 	      sudo systemctl start zabbix-agent
+        echo "Installation completed! Enjoy."
         echo ""
         echo ">>>>>> <<<<<< >>>>>> <<<<<< >>>>>> <<<<<< >>>>>> <<<<<< >>>>>> <<<<<< >>>>>> <<<<<< >>>>>> <<<<<< >>>>>> <<<<<< >>>>>> <<<<<<"
 }
