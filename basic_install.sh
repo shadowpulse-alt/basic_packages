@@ -87,7 +87,7 @@ echo "Install zabbix-agent for linux"
 
 	if [ -f "/etc/zabbix/zabbix_agentd.conf" ];then
 
-        echo "Le fichier de configuration existe !";
+        echo "The configuration file exists!";
 	sudo systemctl stop zabbix-agent
         rm /etc/zabbix/zabbix_agentd.conf
 
