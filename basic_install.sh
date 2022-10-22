@@ -93,8 +93,8 @@ echo "Pull zabbix-agent configuration file"
         wget -O /etc/zabbix/zabbix_agentd.conf https://raw.githubusercontent.com/ElectroFactory/basic_packages/master/zabbix_agentd.conf
         
         echo "Manual configuration of hostname"
-	      read -p "Enter Hostname : " NAME
-	      sudo sed -i "s/Server=/Server=$NAME/g" /etc/zabbix/zabbix_agentd.conf
+	      read -p "Enter Hostname : " HN
+	      sudo sed -i "s/Server=/Server=$HN/g" /etc/zabbix/zabbix_agentd.conf
 	      sudo sed -n 145p /etc/zabbix/zabbix_agentd.conf
 
         echo "Manual configuration of Server IP"
