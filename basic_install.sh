@@ -94,17 +94,17 @@ echo "Pull zabbix-agent configuration file"
         
         echo "Configure hostname into configuration file"
 	      sudo sed -i "s/Hostname=/Hostname=$HOSTNAME/g" /etc/zabbix/zabbix_agentd.conf
-	      sudo sed -n 142p /etc/zabbix/zabbix_agentd.conf
+	      sudo sed -n 145p /etc/zabbix/zabbix_agentd.conf
 
         echo "Configure Server IP into configuration file"
               read -p "Enter Server IP : " Server_IP
 	      sudo sed -i "s/Server=/Server=$Server_IP/g" /etc/zabbix/zabbix_agentd.conf
-	      sudo sed -n 94p /etc/zabbix/zabbix_agentd.conf
+	      sudo sed -n 95p /etc/zabbix/zabbix_agentd.conf
 
         echo "Configure ServerActive IP into configuration file"
               read -p "Enter ServerActive IP : " Server_Active_IP
 	      sudo sed -i "s/ServerActive=/ServerActive=$Server_Active_IP/g" /etc/zabbix/zabbix_agentd.conf
-	      sudo sed -n 133p /etc/zabbix/zabbix_agentd.conf
+	      sudo sed -n 135p /etc/zabbix/zabbix_agentd.conf
 
         sudo systemctl restart zabbix-agent
 }
