@@ -10,9 +10,7 @@ echo "Update"
 
 menu_option_02() {
 echo "Install Packages"
-        sudo apt install -y zsh-common zsh-doc cifs-utils zabbix-agent wget lm-sensors sshpass dos2unix sudo net-tools tasksel git npm neofetch htop xrdp screen iperf3 qemu-guest-agent realmd sssd-tools sssd libnss-sss libpam-sss adcli samba-common zstd apt-transport-https ca-certificates gnupg2 software-properties-common
-        sudo systemctl enable zabbix-agent
-        sudo systemctl start zabbix-agent
+        sudo apt install -y zsh-common zsh-doc cifs-utils wget lm-sensors sshpass dos2unix sudo net-tools tasksel git npm neofetch htop xrdp screen iperf3 qemu-guest-agent realmd sssd-tools sssd libnss-sss libpam-sss adcli samba-common zstd apt-transport-https ca-certificates gnupg2 software-properties-common
 }
 
 menu_option_03() {
@@ -82,12 +80,17 @@ echo "Install nala-legacy"
 }
 
 menu_option_13() {
-echo "Pull zabbix-agent configuration file"
+echo "Install zabbix-agent for linux"
+        apt install -y zabbix-agent
+        sudo systemctl enable zabbix-agent
+        sudo systemctl start zabbix-agent
+
 	if [ -f "/etc/zabbix/zabbix_agentd.conf" ];then
 
         echo "Le fichier de configuration existe !";
 	sudo systemctl stop zabbix-agent
         rm /etc/zabbix/zabbix_agentd.conf
+        
         fi
 
         wget -O /etc/zabbix/zabbix_agentd.conf https://raw.githubusercontent.com/ElectroFactory/basic_packages/master/zabbix_agentd.conf
