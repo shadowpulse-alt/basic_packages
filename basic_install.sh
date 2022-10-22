@@ -95,8 +95,8 @@ echo "Pull zabbix-agent configuration file"
         echo "Manual configuration of hostname"
 	      echo "-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*"
 	      echo ""
-	      read -p "Enter Hostname : " HOST_NAME
-	      sudo sed -i "s/Server=/Server=$HOST_NAME/g" /etc/zabbix/zabbix_agentd.conf
+	      read -p "Enter Hostname : " NAME
+	      sudo sed -i "s/Server=/Server=$NAME/g" /etc/zabbix/zabbix_agentd.conf
 	      sudo sed -n 145p /etc/zabbix/zabbix_agentd.conf
 	      echo ""
               echo "-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*"
