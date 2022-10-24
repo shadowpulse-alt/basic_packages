@@ -4,7 +4,7 @@ Basic Packages is an executable that allows the installation of predefined packa
 
 ## Launch
 
-```zsh
+```console
 cd /tmp
 wget https://raw.githubusercontent.com/ElectroFactory/basic_packages/master/basic_install.sh
 chmod +x basic_install.sh
