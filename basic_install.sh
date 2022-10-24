@@ -124,16 +124,16 @@ echo "Install zabbix-agent for linux"
 }
 
 menu_option_14() {
-  echo "Show hostname"
-cat /proc/sys/kernel/hostname
+echo "Show hostname"
+        cat /proc/sys/kernel/hostname
 }
 
 menu_option_15() {
-  echo "Uninstall zabix-agent for linux"
-sudo systemctl stop zabbix-agent
-apt remove -y zabbix-agent
-apt autopurge -y
-sudo rm -rf /etc/zabbix
+echo "Uninstall zabix-agent for linux"
+        sudo systemctl stop zabbix-agent
+        sudo apt remove -y zabbix-agent
+        sudo apt autopurge -y
+        sudo rm -rf /etc/zabbix
 }
 
 
