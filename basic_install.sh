@@ -188,7 +188,7 @@ until [ "$selection" = "0" ]; do
     12 )  clear ; menu_option_12 ; press_enter ;;
     13 )  clear ; menu_option_13 ; press_enter ;;
     14 )  clear ; menu_option_14 ; press_enter ;;
-    14 )  clear ; menu_option_15 ; press_enter ;;
+    15 )  clear ; menu_option_15 ; press_enter ;;
     00 )  clear ; exit ;;
     *  )  clear ; incorrect_selection ; press_enter ;;
     esac
