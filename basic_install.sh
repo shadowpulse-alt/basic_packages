@@ -81,7 +81,7 @@ echo "Install nala-legacy"
 
 menu_option_13() {
 echo "Install zabbix-agent for linux"
-        apt install -y zabbix-agent
+        apt install -y zabbix-agent curl wget sudo
         sudo systemctl enable zabbix-agent
         sudo systemctl start zabbix-agent
 
