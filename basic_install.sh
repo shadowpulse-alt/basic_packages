@@ -128,6 +128,13 @@ menu_option_14() {
 cat /proc/sys/kernel/hostname
 }
 
+menu_option_15() {
+  echo "Uninstall zabix-agent for linux"
+sudo systemctl stop zabbix-agent
+apt remove -y zabbix-agent
+apt autopurge -y
+sudo rm -rf /etc/zabbix
+}
 
 
 
@@ -159,6 +166,7 @@ until [ "$selection" = "0" ]; do
   echo "        12  -  Install nala-legacy"
   echo "        13  -  Install zabbix-agent for linux"
   echo "        14  -  Show hostname"
+  echo "        15  -  Uninstall zabix-agent for linux"
   echo "        00  -  Exit"
   echo ""
   echo -n "   Enter selection: "
@@ -180,6 +188,7 @@ until [ "$selection" = "0" ]; do
     12 )  clear ; menu_option_12 ; press_enter ;;
     13 )  clear ; menu_option_13 ; press_enter ;;
     14 )  clear ; menu_option_14 ; press_enter ;;
+    14 )  clear ; menu_option_15 ; press_enter ;;
     00 )  clear ; exit ;;
     *  )  clear ; incorrect_selection ; press_enter ;;
     esac
