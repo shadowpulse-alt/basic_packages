@@ -98,9 +98,12 @@ echo "Install zabbix-agent for linux"
         
         echo ">>>>>> <<<<<< >>>>>> <<<<<< >>>>>> <<<<<< >>>>>> <<<<<< >>>>>> <<<<<< >>>>>> <<<<<< >>>>>> <<<<<< >>>>>> <<<<<< >>>>>> <<<<<<"
         echo ""
-        echo "Show hsotname and IPv4"
-        cat /proc/sys/kernel/hostname
-        hostname -I
+        echo "Show hostname and IPv4"
+        echo ""
+        ECHO_HOSTNAME=$(cat /proc/sys/kernel/hostname);
+        ECHO_IPv4=$(hostname -I);
+        echo "Hostname: $ECHO_HOSTNAME"
+        echo "IPv4: $ECHO_IPv4"
         echo ""
         echo ">>>>>> <<<<<< >>>>>> <<<<<< >>>>>> <<<<<< >>>>>> <<<<<< >>>>>> <<<<<< >>>>>> <<<<<< >>>>>> <<<<<< >>>>>> <<<<<< >>>>>> <<<<<<"
         echo ""
