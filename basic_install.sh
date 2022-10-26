@@ -122,8 +122,10 @@ echo "Install zabbix-agent for linux"
 }
 
 menu_option_14() {
-echo "Show hostname"
+echo "Show hostname and IPv4"
         cat /proc/sys/kernel/hostname
+        hostname -I
+        
 }
 
 menu_option_15() {
