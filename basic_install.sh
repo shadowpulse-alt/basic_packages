@@ -94,7 +94,14 @@ echo "Install zabbix-agent for linux"
         fi
 
         wget -O /etc/zabbix/zabbix_agentd.conf https://raw.githubusercontent.com/ElectroFactory/basic_packages/master/zabbix_agentd.conf
-
+        
+        
+        echo ">>>>>> <<<<<< >>>>>> <<<<<< >>>>>> <<<<<< >>>>>> <<<<<< >>>>>> <<<<<< >>>>>> <<<<<< >>>>>> <<<<<< >>>>>> <<<<<< >>>>>> <<<<<<"
+        echo ""
+        echo "Show hsotname and IPv4"
+        cat /proc/sys/kernel/hostname
+        hostname -I
+        echo ""
         echo ">>>>>> <<<<<< >>>>>> <<<<<< >>>>>> <<<<<< >>>>>> <<<<<< >>>>>> <<<<<< >>>>>> <<<<<< >>>>>> <<<<<< >>>>>> <<<<<< >>>>>> <<<<<<"
         echo ""
         echo "Manual configuration of hostname"
@@ -165,7 +172,7 @@ until [ "$selection" = "0" ]; do
   echo "        11  -  Autorize ssh login as root"
   echo "        12  -  Install nala-legacy"
   echo "        13  -  Install zabbix-agent for linux"
-  echo "        14  -  Show hostname"
+  echo "        14  -  Show hostname and IPv4"
   echo "        15  -  Uninstall zabix-agent for linux"
   echo "        00  -  Exit"
   echo ""
