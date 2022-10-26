@@ -85,10 +85,10 @@ echo "Install zabbix-agent for linux"
         sudo systemctl enable zabbix-agent
         sudo systemctl start zabbix-agent
 
-	if [ -f "/etc/zabbix/zabbix_agentd.conf" ];then
+        if [ -f "/etc/zabbix/zabbix_agentd.conf" ];then
 
         echo "The configuration file exists!";
-	sudo systemctl stop zabbix-agent
+        sudo systemctl stop zabbix-agent
         rm /etc/zabbix/zabbix_agentd.conf
 
         fi
@@ -98,27 +98,25 @@ echo "Install zabbix-agent for linux"
         echo ">>>>>> <<<<<< >>>>>> <<<<<< >>>>>> <<<<<< >>>>>> <<<<<< >>>>>> <<<<<< >>>>>> <<<<<< >>>>>> <<<<<< >>>>>> <<<<<< >>>>>> <<<<<<"
         echo ""
         echo "Manual configuration of hostname"
-	      read -p "Enter Hostname : " HOSTNAME
-	      sudo sed -i "s/Hostname=/Hostname=$HOSTNAME/g" /etc/zabbix/zabbix_agentd.conf
-	      sudo sed -n 145p /etc/zabbix/zabbix_agentd.conf
+              read -p "Enter Hostname : " HOSTNAME
+              sudo sed -i "s/Hostname=/Hostname=$HOSTNAME/g" /etc/zabbix/zabbix_agentd.conf
+              sudo sed -n 145p /etc/zabbix/zabbix_agentd.conf
         echo ""
         echo ">>>>>> <<<<<< >>>>>> <<<<<< >>>>>> <<<<<< >>>>>> <<<<<< >>>>>> <<<<<< >>>>>> <<<<<< >>>>>> <<<<<< >>>>>> <<<<<< >>>>>> <<<<<<"
         echo ""
         echo "Manual configuration of Server IP"
-              read -p "Enter Server IP : " Server_IP
-	      sudo sed -i "s/Server=/Server=$Server_IP/g" /etc/zabbix/zabbix_agentd.conf
-	      sudo sed -n 95p /etc/zabbix/zabbix_agentd.conf
+              read -p "Enter Zabbix Server IPv4 : " Server_IPv4
+              sudo sed -i "s/Server=/Server=$Server_IPv4/g" /etc/zabbix/zabbix_agentd.conf
+              sudo sed -n 95p /etc/zabbix/zabbix_agentd.conf
+              sudo sed -i "s/ServerActive=/ServerActive=$Server_IPv4/g" /etc/zabbix/zabbix_agentd.conf
+              sudo sed -n 135p /etc/zabbix/zabbix_agentd.conf
+              sudo systemctl start zabbix-agent
         echo ""
         echo ">>>>>> <<<<<< >>>>>> <<<<<< >>>>>> <<<<<< >>>>>> <<<<<< >>>>>> <<<<<< >>>>>> <<<<<< >>>>>> <<<<<< >>>>>> <<<<<< >>>>>> <<<<<<"
         echo ""
-        echo "Manual configuration of ServerActive IP"
-              read -p "Enter ServerActive IP : " Server_Active_IP
-	      sudo sed -i "s/ServerActive=/ServerActive=$Server_Active_IP/g" /etc/zabbix/zabbix_agentd.conf
-	      sudo sed -n 135p /etc/zabbix/zabbix_agentd.conf
-	      sudo systemctl start zabbix-agent
-        echo ""
         echo ""
         echo "Installation completed! Enjoy."
+        echo ""
         echo ""
         echo ">>>>>> <<<<<< >>>>>> <<<<<< >>>>>> <<<<<< >>>>>> <<<<<< >>>>>> <<<<<< >>>>>> <<<<<< >>>>>> <<<<<< >>>>>> <<<<<< >>>>>> <<<<<<"
 }
