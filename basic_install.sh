@@ -10,7 +10,7 @@ echo "Update"
 
 menu_option_02() {
 echo "Install Packages"
-        sudo apt install -y zsh-common zsh-doc cifs-utils wget curl lm-sensors sshpass dos2unix sudo net-tools tasksel git npm neofetch htop xrdp screen iperf3 qemu-guest-agent realmd sssd-tools sssd libnss-sss libpam-sss adcli samba-common zstd apt-transport-https ca-certificates gnupg2 software-properties-common
+        sudo apt install -y zsh-common zsh-doc cifs-utils wget curl lm-sensors sshpass dos2unix sudo net-tools tasksel git npm neofetch htop xrdp screen iperf3 realmd sssd-tools sssd libnss-sss libpam-sss adcli samba-common zstd apt-transport-https ca-certificates gnupg2 software-properties-common
 }
 
 menu_option_03() {
@@ -152,6 +152,18 @@ echo "Activate num lock at startup for debian"
 echo -e "#!/bin/bash \nfor tty in /dev/tty[1-6]; do \n/usr/bin/setleds -D +num < $tty \ndone" >> /etc/rc.local
 }
 
+menu_option_17() {
+echo "Install guests addons for proxmox"
+sudo apt install -y qemu-guest-agent
+}
+
+menu_option_18() {
+echo "Install guests addons for ESXi"
+sudo apt install -y open-vm-tools
+}
+
+
+
 press_enter() {
   echo ""
   echo -n "      Press Enter to continue "
@@ -182,6 +194,8 @@ until [ "$selection" = "0" ]; do
   echo "        14  -  Show hostname and IPv4"
   echo "        15  -  Uninstall zabix-agent for linux"
   echo "        16  -  Activate num lock at startup for debian"
+  echo "        17  -  Install guests addons for proxmox"
+  echo "        18  -  Install guests addons for ESXi"
   echo "        00  -  Exit"
   echo ""
   echo -n "   Enter selection: "
@@ -205,6 +219,8 @@ until [ "$selection" = "0" ]; do
     14 )  clear ; menu_option_14 ; press_enter ;;
     15 )  clear ; menu_option_15 ; press_enter ;;
     16 )  clear ; menu_option_16 ; press_enter ;;
+    17 )  clear ; menu_option_17 ; press_enter ;;
+    18 )  clear ; menu_option_18 ; press_enter ;;
     00 )  clear ; exit ;;
     *  )  clear ; incorrect_selection ; press_enter ;;
     esac
