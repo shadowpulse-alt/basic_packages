@@ -147,7 +147,10 @@ echo "Uninstall zabix-agent for linux"
         sudo rm -rf /etc/zabbix
 }
 
-
+menu_option_16() {
+echo "Activate num lock at startup for debian"
+echo -e "#!/bin/bash \nfor tty in /dev/tty[1-6]; do \n/usr/bin/setleds -D +num < $tty \ndone" >> /etc/rc.local
+}
 
 press_enter() {
   echo ""
@@ -178,6 +181,7 @@ until [ "$selection" = "0" ]; do
   echo "        13  -  Install zabbix-agent for linux"
   echo "        14  -  Show hostname and IPv4"
   echo "        15  -  Uninstall zabix-agent for linux"
+  echo "        16  -  Activate num lock at startup for debian"
   echo "        00  -  Exit"
   echo ""
   echo -n "   Enter selection: "
@@ -200,6 +204,7 @@ until [ "$selection" = "0" ]; do
     13 )  clear ; menu_option_13 ; press_enter ;;
     14 )  clear ; menu_option_14 ; press_enter ;;
     15 )  clear ; menu_option_15 ; press_enter ;;
+    16 )  clear ; menu_option_16 ; press_enter ;;
     00 )  clear ; exit ;;
     *  )  clear ; incorrect_selection ; press_enter ;;
     esac
