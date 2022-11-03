@@ -15,6 +15,7 @@ echo "Install Packages"
 
 menu_option_03() {
 echo "Install Oh-My-Zsh"
+        sudo apt install -y git curl
         sudo apt install -y zsh
         sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" && exit
 }
