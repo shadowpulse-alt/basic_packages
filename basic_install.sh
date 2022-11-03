@@ -169,8 +169,6 @@ echo "Autorize gnome login as root"
         sudo sed -n 3p /etc/pam.d/gdm-password
 }
 
-
-
 press_enter() {
   echo ""
   echo -n "      Press Enter to continue "
