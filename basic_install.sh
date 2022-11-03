@@ -162,6 +162,11 @@ echo "Install guests addons for ESXi"
 sudo apt install -y open-vm-tools
 }
 
+menu_option_19() {
+echo "Autorize gnome login as root"
+        sudo sed -i "s/auth required pam_succeed_if.so user != root quiet/#auth required pam_succeed_if.so user != root quiet/g" /etc/pam.d/gdm-password
+        sudo sed -n 3p /etc/pam.d/gdm-password
+
 
 
 press_enter() {
@@ -196,6 +201,7 @@ until [ "$selection" = "0" ]; do
   echo "        16  -  Activate num lock at startup for debian"
   echo "        17  -  Install guests addons for proxmox"
   echo "        18  -  Install guests addons for ESXi"
+  echo "        19  -  Autorize gnome login as root"
   echo "        00  -  Exit"
   echo ""
   echo -n "   Enter selection: "
@@ -221,6 +227,7 @@ until [ "$selection" = "0" ]; do
     16 )  clear ; menu_option_16 ; press_enter ;;
     17 )  clear ; menu_option_17 ; press_enter ;;
     18 )  clear ; menu_option_18 ; press_enter ;;
+    19 )  clear ; menu_option_18 ; press_enter ;;
     00 )  clear ; exit ;;
     *  )  clear ; incorrect_selection ; press_enter ;;
     esac
