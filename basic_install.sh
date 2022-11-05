@@ -169,6 +169,12 @@ echo "Autorize gnome login as root"
         sudo sed -n 3p /etc/pam.d/gdm-password
 }
 
+menu_option_20() {
+echo "Deactivate CD-ROM sources from sources.list configuration file"
+        sudo sed -i "s/deb cdrom:/#deb cdrom:/g" /etc/apt/sources.list
+        sudo sed -n 3p /etc/apt/sources.list
+}
+
 press_enter() {
   echo ""
   echo -n "      Press Enter to continue "
@@ -202,6 +208,7 @@ until [ "$selection" = "0" ]; do
   echo "        17  -  Install guests addons for proxmox"
   echo "        18  -  Install guests addons for ESXi"
   echo "        19  -  Autorize gnome login as root"
+  echo "        20  -  Deactivate CD-ROM sources from sources.list configuration file"
   echo "        00  -  Exit"
   echo ""
   echo -n "   Enter selection: "
@@ -228,6 +235,7 @@ until [ "$selection" = "0" ]; do
     17 )  clear ; menu_option_17 ; press_enter ;;
     18 )  clear ; menu_option_18 ; press_enter ;;
     19 )  clear ; menu_option_19 ; press_enter ;;
+    20 )  clear ; menu_option_20 ; press_enter ;;
     00 )  clear ; exit ;;
     *  )  clear ; incorrect_selection ; press_enter ;;
     esac
