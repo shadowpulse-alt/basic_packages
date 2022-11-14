@@ -10,7 +10,7 @@ echo "Update"
 
 menu_option_02() {
 echo "Install Packages"
-        sudo apt install -y zsh-common zip unzip zsh-doc cifs-utils wget curl lm-sensors sshpass dos2unix sudo net-tools tasksel git npm neofetch htop xrdp screen iperf3 realmd sssd-tools sssd libnss-sss libpam-sss adcli samba-common zstd apt-transport-https ca-certificates gnupg2 software-properties-common
+        sudo apt install -y zsh-common zip unzip zsh-doc cifs-utils wget curl lm-sensors sshpass dos2unix sudo net-tools tasksel git npm neofetch htop xrdp screen iperf3 samba-common zstd apt-transport-https ca-certificates gnupg2 software-properties-common
 }
 
 menu_option_03() {
