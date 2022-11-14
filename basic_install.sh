@@ -165,7 +165,7 @@ sudo apt install -y open-vm-tools
 
 menu_option_19() {
 echo "Autorize gnome login as root"
-        sudo sed -i "s/auth required pam_succeed_if.so user != root quiet/#auth required pam_succeed_if.so user != root quiet/g" /etc/pam.d/gdm-password
+        sudo sed -i "s/auth    required        pam_succeed_if.so user != root quiet_success/#auth    required        pam_succeed_if.so user != root quiet_success/g" /etc/pam.d/gdm-password
         sudo sed -n 3p /etc/pam.d/gdm-password
 }
 
