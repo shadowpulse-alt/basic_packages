@@ -19,7 +19,7 @@ blanc='\e[1;37m'
 neutre='\e[0;m'
 
 
-echo -e "${bleuclair}Basic packages installer V3.8.0${neutre}"
+# Basic packages installer V3.8.0
 
 menu_option_01() {
 echo "Update"
@@ -210,7 +210,7 @@ incorrect_selection() {
 until [ "$selection" = "0" ]; do
   clear
   echo ""
-  echo "        01  -  Update"
+  echo "        01  -  ${bleuclair}Update${neutre}"
   echo "        02  -  Install Packages"
   echo "        03  -  Install Oh-My-Zsh"
   echo "        04  -  Delete olds .zshrc files (classic user)"
