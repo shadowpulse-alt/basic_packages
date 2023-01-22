@@ -210,7 +210,7 @@ incorrect_selection() {
 until [ "$selection" = "0" ]; do
   clear
   echo ""
-  echo "        01  -  ${bleuclair}Update${neutre}"
+  echo "${bleuclair}        01  -  Update${neutre}"
   echo "        02  -  Install Packages"
   echo "        03  -  Install Oh-My-Zsh"
   echo "        04  -  Delete olds .zshrc files (classic user)"
