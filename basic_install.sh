@@ -191,7 +191,7 @@ incorrect_selection() {
 until [ "$selection" = "0" ]; do
   clear
   echo ""
-  echo "        01  - \E[32m Update \E[0m"
+  echo "        01  - \E[32m Update"
   echo "        02  -  Install Packages"
   echo "        03  -  Install Oh-My-Zsh"
   echo "        04  -  Delete olds .zshrc files (classic user)"
