@@ -3,7 +3,8 @@
 clear
 
 menu_option_01() {
-echo "Update"
+echo -e "\e[34mUpdate"
+#echo "Update"
         sudo apt update
         apt full-upgrade -y
 }
