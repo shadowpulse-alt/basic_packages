@@ -4,7 +4,6 @@ clear
 
 menu_option_01() {
 echo -e "\e[34mUpdate"
-#echo "Update"
         sudo apt update
         apt full-upgrade -y
 }
@@ -192,7 +191,7 @@ incorrect_selection() {
 until [ "$selection" = "0" ]; do
   clear
   echo ""
-  echo "        01  -  Update"
+  echo -e "    \e[34m01  -  Update"
   echo "        02  -  Install Packages"
   echo "        03  -  Install Oh-My-Zsh"
   echo "        04  -  Delete olds .zshrc files (classic user)"
