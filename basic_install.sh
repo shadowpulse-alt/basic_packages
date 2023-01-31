@@ -9,7 +9,7 @@
         cyan='\033[0;36m'
         brightgreen='\033[0;92m'
         brightcyan='\033[0;96m'
-        brightwhite='\033[0;97m'
+        brightwhite='\033[0;97m' 
 
 clear
 
@@ -214,12 +214,12 @@ until [ "$selection" = "0" ]; do
   echo -e "        ${red}[09]  -  Find .zshrc file at home directory (root user)"
   echo -e "        ${marron}[10]  -  Check current folder"
   echo -e "        ${red}[11]  -  Autorize ssh login as root"
-  echo -e "        ${bright-cyan}[12]  -  Install nala-legacy"
+  echo -e "        ${brightcyan}[12]  -  Install nala-legacy"
   
   echo -e "        ${cyan}[13]  -  Install zabbix-agent for linux"  
   echo -e "        ${cyan}[14]  -  Show hostname and IPv4"
   echo -e "        ${red}[15]  -  Uninstall zabix-agent for linux"
-  echo -e "        ${bright-white}[16]  -  Activate num lock at startup for debian"
+  echo -e "        ${brightwhite}[16]  -  Activate num lock at startup for debian"
   echo -e "        ${blue}[17]  -  Install guests addons for proxmox"
   echo -e "        ${blue}[18]  -  Install guests addons for ESXi"
   
