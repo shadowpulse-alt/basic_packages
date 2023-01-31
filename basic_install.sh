@@ -3,7 +3,6 @@
 #vars
     #colors
         red='\033[0;31m'
-        maron='\033[0;33m'
         blue='\033[0;34m'
         magenta='\033[0;35m'        
         cyan='\033[0;36m'
@@ -212,7 +211,7 @@ until [ "$selection" = "0" ]; do
   echo -e "        ${red}[07]  -  Delete olds .zshrc files (root user)"
   echo -e "        ${red}[08]  -  Pull new .zshrc file (root user)"
   echo -e "        ${red}[09]  -  Find .zshrc file at home directory (root user)"
-  echo -e "        ${marron}[10]  -  Check current folder"
+  echo -e "        ${brightwhite}[10]  -  Check current folder"
   echo -e "        ${red}[11]  -  Autorize ssh login as root"
   echo -e "        ${brightcyan}[12]  -  Install nala-legacy"
   
