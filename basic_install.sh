@@ -1,15 +1,16 @@
 #!/bin/bash
 
-red='\033[0;31m'
-orange='\033[0;36m'
-yellow='\033[1;33m'
-green='\033[0;32m'
-blue='\033[0;34m'
-indigo='\033[0;35m'
-violet='\033[0;36m'
-white='\033[0;97m'
-magenta'\033[0;95m'
-nc='\033[0m'
+#vars
+    #colors
+        red='\033[0;31m'
+        bright-white='\033[0;97m'
+        bright-green='\033[0;92m'
+        magenta='\033[0;35m'
+        bright-cyan='\033[0;33m'
+        marron='\033[0;31m'
+        bright-cyan='\033[0;96m'
+        cyan='\033[0;36m'
+        blue='\033[0;34m'
 
 clear
 
@@ -202,29 +203,29 @@ incorrect_selection() {
 until [ "$selection" = "0" ]; do
   clear
   echo -e ""
-  echo -e "        ${orange}[01]  -  Update"
-  echo -e "        ${yellow}[02]  -  Install Packages"
-  echo -e "        ${green}[03]  -  Install Oh-My-Zsh"
-  echo -e "        ${blue}[04]  -  Delete olds .zshrc files (classic user)"
-  echo -e "        ${indigo}[05]  -  Pull new .zshrc file (classic user)"
-  echo -e "        ${violet}[06]  -  Find .zshrc file at home directory (classic user)"
+  echo -e "        ${bright-white}[01]  -  Update"
+  echo -e "        ${bright-green}[02]  -  Install Packages"
+  echo -e "        ${magenta}[03]  -  Install Oh-My-Zsh"
+  echo -e "        ${bright-cyan}[04]  -  Delete olds .zshrc files (classic user)"
+  echo -e "        ${bright-cyan}[05]  -  Pull new .zshrc file (classic user)"
+  echo -e "        ${bright-cyan}[06]  -  Find .zshrc file at home directory (classic user)"
   
-  echo -e "        ${orange}[07]  -  Delete olds .zshrc files (root user)"
-  echo -e "        ${yellow}[08]  -  Pull new .zshrc file (root user)"
-  echo -e "        ${green}[09]  -  Find .zshrc file at home directory (root user)"
-  echo -e "        ${blue}[10]  -  Check current folder"
-  echo -e "        ${indigo}[11]  -  Autorize ssh login as root"
-  echo -e "        ${violet}[12]  -  Install nala-legacy"
+  echo -e "        ${red}[07]  -  Delete olds .zshrc files (root user)"
+  echo -e "        ${red}[08]  -  Pull new .zshrc file (root user)"
+  echo -e "        ${red}[09]  -  Find .zshrc file at home directory (root user)"
+  echo -e "        ${marron}[10]  -  Check current folder"
+  echo -e "        ${red}[11]  -  Autorize ssh login as root"
+  echo -e "        ${bright-cyan}[12]  -  Install nala-legacy"
   
-  echo -e "        ${orange}[13]  -  Install zabbix-agent for linux"  
-  echo -e "        ${yellow}[14]  -  Show hostname and IPv4"
-  echo -e "        ${green}[15]  -  Uninstall zabix-agent for linux"
-  echo -e "        ${blue}[16]  -  Activate num lock at startup for debian"
-  echo -e "        ${indigo}[17]  -  Install guests addons for proxmox"
-  echo -e "        ${violet}[18]  -  Install guests addons for ESXi"
+  echo -e "        ${cyan}[13]  -  Install zabbix-agent for linux"  
+  echo -e "        ${cyan}[14]  -  Show hostname and IPv4"
+  echo -e "        ${red}[15]  -  Uninstall zabix-agent for linux"
+  echo -e "        ${bright-white}[16]  -  Activate num lock at startup for debian"
+  echo -e "        ${blue}[17]  -  Install guests addons for proxmox"
+  echo -e "        ${blue}[18]  -  Install guests addons for ESXi"
   
-  echo -e "        ${white}[19]  -  Autorize gnome login as root"
-  echo -e "        ${magenta}[20]  -  Deactivate CD-ROM sources from sources.list configuration file"
+  echo -e "        ${red}[19]  -  Autorize gnome login as root"
+  echo -e "        ${bright-white}[20]  -  Deactivate CD-ROM sources from sources.list configuration file"
   
   echo -e "        ${red}[00]  -  Exit"
   echo ""
