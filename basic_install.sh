@@ -225,7 +225,7 @@ until [ "$selection" = "0" ]; do
   echo -e "        ${red}[19]  -  Autorize gnome login as root"
   echo -e "        ${brightwhite}[20]  -  Deactivate CD-ROM sources from sources.list configuration file"
   
-  echo -e "        ${red}[00]  -  Exit"
+  echo -e "        ${brightwhite}[00]  -  Exit"
   echo ""
   echo -n "   Enter selection: "
   read selection
