@@ -62,7 +62,6 @@ echo "Pull new .zshrc file (root user)"
         cd /root
         wget https://raw.githubusercontent.com/ElectroFactory/basic_packages/master/.zshrc
         ls -la
-        source /root/.zshrc
 }
 
 menu_option_09() {
