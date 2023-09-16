@@ -257,7 +257,7 @@ echo "let the fans vary between 60 and 255 pwm levels"
 
 menu_option_25() {
 echo "automount plex medias folder libraries"
-        sshpass -p '910805' ssh root@192.168.1.65 -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "mount -a"
+        sshpass -p '910805' ssh root@192.168.1.65 "mount -a"
 }
 
 press_enter() {
