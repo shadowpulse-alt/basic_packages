@@ -255,6 +255,11 @@ echo "let the fans vary between 60 and 255 pwm levels"
         sshpass -p 'Clement27930' ssh admin@192.168.1.79 -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 7 min 60"
 }
 
+menu_option_25() {
+echo "automount plex medias folder libraries"
+        sshpass -p '910805' ssh root@192.168.1.65 -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "mount -a"
+}
+
 press_enter() {
   echo ""
   echo -n "      Press Enter to continue "
@@ -293,10 +298,11 @@ until [ "$selection" = "0" ]; do
   echo -e "        ${red}[19]  -  Autorize gnome login as root"
   echo -e "        ${brightwhite}[20]  -  Deactivate CD-ROM sources from sources.list configuration file"
 
-  echo -e "        ${brightcyan}[21]  -  fix the fans at the 60 level of the pwm"
-  echo -e "        ${brightgreen}[22]  -  let the fans vary between 60 and 120 pwm levels"
-  echo -e "        ${brightwhite}[23]  -  let the fans vary between 60 and 150 pwm levels"
-  echo -e "        ${magenta}[24]  -  let the fans vary between 60 and 255 pwm levels"
+  echo -e "        ${brightcyan}[21]  -  Fix the fans at the 60 level of the pwm"
+  echo -e "        ${brightgreen}[22]  -  Let the fans vary between 60 and 120 pwm levels"
+  echo -e "        ${brightwhite}[23]  -  Let the fans vary between 60 and 150 pwm levels"
+  echo -e "        ${magenta}[24]  -  Let the fans vary between 60 and 255 pwm levels"
+  echo -e "        ${brightwhite}[25]  -  Automount plex medias folder libraries"
   
   echo -e "        ${brightwhite}[00]  -  Exit"
   echo -e "        ${brightwhite}"
