@@ -14,8 +14,9 @@ clear
 
 menu_option_01() {
 echo "Update"
+	apt install -y sudo
         sudo apt update
-        apt full-upgrade -y
+        sudo apt full-upgrade -y
 }
 
 menu_option_02() {
