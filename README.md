@@ -5,8 +5,13 @@ Basic Packages is an executable that allows the installation of predefined packa
 ## Launch
 
 ```console
+
+bash <(wget -qO- https://raw.githubusercontent.com/EdR0Z/basic_packages/master/basic_install.sh)
+
+or
+
 cd /tmp
-wget https://raw.githubusercontent.com/ElectroFactory/basic_packages/master/basic_install.sh
+wget https://raw.githubusercontent.com/EdR0Z/basic_packages/master/basic_install.sh
 chmod +x basic_install.sh
 ./basic_install.sh
 ```
