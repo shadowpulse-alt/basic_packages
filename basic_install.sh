@@ -273,7 +273,10 @@ echo "Let the fans vary between 60 and 255 pwm levels"
 
 menu_option_25() {
 echo "Install telegraf agent for linux"
-	
+	sudo apt-get update && apt install sudo -y
+	curl -s https://repos.influxdata.com/influxdata-archive_compat.key > influxdata-archive_compat.key
+	echo 'deb [trusted=yes] https://repos.influxdata.com/debian stable main' | sudo tee /etc/apt/sources.list.d/influxdata.list
+	sudo apt-get install telegraf
 }
 
 press_enter() {
@@ -318,7 +321,7 @@ until [ "$selection" = "0" ]; do
   echo -e "        ${brightgreen}[22]  -  Let the fans vary between 60 and 120 pwm levels"
   echo -e "        ${brightwhite}[23]  -  Let the fans vary between 60 and 150 pwm levels"
   echo -e "        ${magenta}[24]  -  Let the fans vary between 60 and 255 pwm levels"
-  echo -e "        ${brightwhite}[25]  -  Automount plex medias folder libraries"
+  echo -e "        ${brightwhite}[25]  -  Install telegraf agent for linux"
   
   echo -e "        ${brightwhite}[00]  -  Exit"
   echo -e "        ${brightwhite}"
