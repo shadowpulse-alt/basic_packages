@@ -257,13 +257,12 @@ echo "let the fans vary between 60 and 255 pwm levels"
 
 menu_option_25() {
 echo "Install telegraf agent for linux"
-	sudo apt-get update && apt install sudo -y
-	curl -s https://repos.influxdata.com/influxdata-archive_compat.key > influxdata-archive_compat.key
-	echo 'deb [trusted=yes] https://repos.influxdata.com/debian stable main' | sudo tee /etc/apt/sources.list.d/influxdata.list
-	sudo apt-get install telegraf
+        apt-get update && apt install sudo git curl -y
+        echo 'deb [trusted=yes] https://repos.influxdata.com/debian stable main' | sudo tee /etc/apt/sources.list.d/influxdata.list
+        sudo apt-get install telegraf
         cd /etc/telegraf
-        rm telegraf.conf
-        wget https://raw.githubusercontent.com/ElectroFactory/basic_packages/master/telegraf.conf
+        sudo rm telegraf.conf
+        sudo wget https://raw.githubusercontent.com/EdR0Z/basic_packages/master/telegraf.conf
         ls -la
 }
 
