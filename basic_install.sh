@@ -14,20 +14,17 @@ clear
 
 menu_option_01() {
 echo "Update"
-	apt install -y sudo
         sudo apt update
-        sudo apt full-upgrade -y
+        apt full-upgrade -y
 }
 
 menu_option_02() {
 echo "Install Packages"
-	apt install -y sudo
         sudo apt install -y zsh-common zip unzip zsh-doc cifs-utils wget curl lm-sensors sshpass dos2unix sudo net-tools tasksel git npm neofetch htop xrdp screen iperf3 samba-common zstd apt-transport-https ca-certificates gnupg2 software-properties-common
 }
 
 menu_option_03() {
 echo "Install Oh-My-Zsh"
-	apt install -y sudo
         sudo apt install -y git curl
         sudo apt install -y zsh
         sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" && exit
@@ -55,7 +52,6 @@ echo "Find .zshrc file at home directory (classic user)"
 
 menu_option_07() {
 echo "Delete olds .zshrc files (root user)"
-	apt install -y sudo
         cd /root 
         sudo rm .zshrc* -f
         ls -la
@@ -81,7 +77,6 @@ echo "Check current folder"
 
 menu_option_11() {
 echo "Autorize ssh login as root"
-	apt install -y sudo
         sudo sed -i "s/#PermitRootLogin prohibit-password/PermitRootLogin yes/g" /etc/ssh/sshd_config
         sudo sed -n 32p /etc/ssh/sshd_config
         sudo systemctl restart sshd
@@ -89,7 +84,6 @@ echo "Autorize ssh login as root"
 
 menu_option_12() {
 echo "Install nala-legacy"
-	apt install -y sudo
         sudo wget -qO- https://deb.volian.org/volian/scar.key | gpg --dearmor | dd of=/usr/share/keyrings/volian-archive-scar.gpg && sudo echo "deb [signed-by=/usr/share/keyrings/volian-archive-scar.gpg arch=amd64] https://deb.volian.org/volian/ scar main" > /etc/apt/sources.list.d/volian-archive-scar.list && sudo apt update && sudo apt install -y nala-legacy
         export LC_ALL=C.UTF-8
         export LANG=C.UTF-8
@@ -98,7 +92,6 @@ echo "Install nala-legacy"
 
 menu_option_13() {
 echo "Install zabbix-agent for linux"
-	apt install -y sudo
         apt install -y zabbix-agent curl wget sudo
         sudo systemctl enable zabbix-agent
         sudo systemctl start zabbix-agent
@@ -158,7 +151,6 @@ echo "Show hostname and IPv4"
 
 menu_option_15() {
 echo "Uninstall zabix-agent for linux"
-	apt install -y sudo
         sudo systemctl stop zabbix-agent
         sudo apt remove -y zabbix-agent
         sudo apt autopurge -y
@@ -167,24 +159,21 @@ echo "Uninstall zabix-agent for linux"
 
 menu_option_16() {
 echo "Activate num lock at startup for debian"
-	echo -e "#!/bin/bash \nfor tty in /dev/tty[1-6]; do \n/usr/bin/setleds -D +num < $tty \ndone" >> /etc/rc.local
+echo -e "#!/bin/bash \nfor tty in /dev/tty[1-6]; do \n/usr/bin/setleds -D +num < $tty \ndone" >> /etc/rc.local
 }
 
 menu_option_17() {
 echo "Install guests addons for proxmox"
-	apt install -y sudo
-	sudo apt install -y qemu-guest-agent
+sudo apt install -y qemu-guest-agent
 }
 
 menu_option_18() {
 echo "Install guests addons for ESXi"
-	apt install -y sudo
-	sudo apt install -y open-vm-tools
+sudo apt install -y open-vm-tools
 }
 
 menu_option_19() {
 echo "Autorize gnome login as root"
-	apt install -y sudo
         sudo sed -i "s/auth required pam_succeed_if.so user != root quiet_success/#auth required pam_succeed_if.so user != root quiet_success/g" /etc/pam.d/gdm-password
         sudo sed -n 3p /etc/pam.d/gdm-password
         sudo sed -i "s/auth required pam_succeed_if.so user != root quiet/#auth required pam_succeed_if.so user != root quiet/g" /etc/pam.d/gdm-password
@@ -193,82 +182,77 @@ echo "Autorize gnome login as root"
 
 menu_option_20() {
 echo "Deactivate CD-ROM sources from sources.list configuration file"
-	apt install -y sudo
         sudo sed -i "s/deb cdrom:/#deb cdrom:/g" /etc/apt/sources.list
         sudo sed -n 3p /etc/apt/sources.list
 }
 
 menu_option_21() {
-echo "Fix the fans at the 60 level of the pwm"
-	apt install -y sudo sshpass
-	sshpass -p 'YOUR_PASSWORD' ssh YOUR_USER@YOUR_ILO4_IP -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p global unlock"
-        sshpass -p 'YOUR_PASSWORD' ssh YOUR_USER@YOUR_ILO4_IP -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p global lock 60"
+echo "fix the fans at the 60 level of the pwm"
+	sshpass -p 'Clement27930' ssh admin@192.168.1.79 -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p global unlock"
+        sshpass -p 'Clement27930' ssh admin@192.168.1.79 -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p global lock 60"
 }
 
 menu_option_22() {
-echo "Let the fans vary between 60 and 120 pwm levels"
-	apt install -y sudo sshpass
-	sshpass -p 'YOUR_PASSWORD' ssh YOUR_USER@YOUR_ILO4_IP -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p global unlock" 
-        sshpass -p 'YOUR_PASSWORD' ssh YOUR_USER@YOUR_ILO4_IP -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 0 max 120"
-	sshpass -p 'YOUR_PASSWORD' ssh YOUR_USER@YOUR_ILO4_IP -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 1 max 120"
-	sshpass -p 'YOUR_PASSWORD' ssh YOUR_USER@YOUR_ILO4_IP -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 2 max 120"
-	sshpass -p 'YOUR_PASSWORD' ssh YOUR_USER@YOUR_ILO4_IP -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 3 max 120"
-	sshpass -p 'YOUR_PASSWORD' ssh YOUR_USER@YOUR_ILO4_IP -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 4 max 120"
-	sshpass -p 'YOUR_PASSWORD' ssh YOUR_USER@YOUR_ILO4_IP -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 5 max 120"
-	sshpass -p 'YOUR_PASSWORD' ssh YOUR_USER@YOUR_ILO4_IP -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 6 max 120"
-	sshpass -p 'YOUR_PASSWORD' ssh YOUR_USER@YOUR_ILO4_IP -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 7 max 120"		
-        sshpass -p 'YOUR_PASSWORD' ssh YOUR_USER@YOUR_ILO4_IP -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 0 min 60"		
-	sshpass -p 'YOUR_PASSWORD' ssh YOUR_USER@YOUR_ILO4_IP -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 1 min 60"
-        sshpass -p 'YOUR_PASSWORD' ssh YOUR_USER@YOUR_ILO4_IP -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 2 min 60"
-        sshpass -p 'YOUR_PASSWORD' ssh YOUR_USER@YOUR_ILO4_IP -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 3 min 60"
-        sshpass -p 'YOUR_PASSWORD' ssh YOUR_USER@YOUR_ILO4_IP -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 4 min 60"
-        sshpass -p 'YOUR_PASSWORD' ssh YOUR_USER@YOUR_ILO4_IP -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 5 min 60"
-        sshpass -p 'YOUR_PASSWORD' ssh YOUR_USER@YOUR_ILO4_IP -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 6 min 60"
-        sshpass -p 'YOUR_PASSWORD' ssh YOUR_USER@YOUR_ILO4_IP -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 7 min 60"
+echo "let the fans vary between 60 and 120 pwm levels"
+	sshpass -p 'Clement27930' ssh admin@192.168.1.79 -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p global unlock" 
+        sshpass -p 'Clement27930' ssh admin@192.168.1.79 -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 0 max 120"
+	sshpass -p 'Clement27930' ssh admin@192.168.1.79 -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 1 max 120"
+	sshpass -p 'Clement27930' ssh admin@192.168.1.79 -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 2 max 120"
+	sshpass -p 'Clement27930' ssh admin@192.168.1.79 -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 3 max 120"
+	sshpass -p 'Clement27930' ssh admin@192.168.1.79 -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 4 max 120"
+	sshpass -p 'Clement27930' ssh admin@192.168.1.79 -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 5 max 120"
+	sshpass -p 'Clement27930' ssh admin@192.168.1.79 -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 6 max 120"
+	sshpass -p 'Clement27930' ssh admin@192.168.1.79 -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 7 max 120"		
+        sshpass -p 'Clement27930' ssh admin@192.168.1.79 -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 0 min 60"		
+	sshpass -p 'Clement27930' ssh admin@192.168.1.79 -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 1 min 60"
+        sshpass -p 'Clement27930' ssh admin@192.168.1.79 -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 2 min 60"
+        sshpass -p 'Clement27930' ssh admin@192.168.1.79 -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 3 min 60"
+        sshpass -p 'Clement27930' ssh admin@192.168.1.79 -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 4 min 60"
+        sshpass -p 'Clement27930' ssh admin@192.168.1.79 -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 5 min 60"
+        sshpass -p 'Clement27930' ssh admin@192.168.1.79 -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 6 min 60"
+        sshpass -p 'Clement27930' ssh admin@192.168.1.79 -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 7 min 60"
 }
 
 menu_option_23() {
-echo "Let the fans vary between 60 and 150 pwm levels"
-	apt install -y sudo sshpass
-        sshpass -p 'YOUR_PASSWORD' ssh YOUR_USER@YOUR_ILO4_IP -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p global unlock"        
-        sshpass -p 'YOUR_PASSWORD' ssh YOUR_USER@YOUR_ILO4_IP -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 0 max 150"
-	sshpass -p 'YOUR_PASSWORD' ssh YOUR_USER@YOUR_ILO4_IP -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 1 max 150"
-	sshpass -p 'YOUR_PASSWORD' ssh YOUR_USER@YOUR_ILO4_IP -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 2 max 150"
-	sshpass -p 'YOUR_PASSWORD' ssh YOUR_USER@YOUR_ILO4_IP -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 3 max 150"
-	sshpass -p 'YOUR_PASSWORD' ssh YOUR_USER@YOUR_ILO4_IP -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 4 max 150"
-	sshpass -p 'YOUR_PASSWORD' ssh YOUR_USER@YOUR_ILO4_IP -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 5 max 150"
-	sshpass -p 'YOUR_PASSWORD' ssh YOUR_USER@YOUR_ILO4_IP -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 6 max 150"
-	sshpass -p 'YOUR_PASSWORD' ssh YOUR_USER@YOUR_ILO4_IP -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 7 max 150"		
-        sshpass -p 'YOUR_PASSWORD' ssh YOUR_USER@YOUR_ILO4_IP -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 0 min 60"		
-	sshpass -p 'YOUR_PASSWORD' ssh YOUR_USER@YOUR_ILO4_IP -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 1 min 60"
-        sshpass -p 'YOUR_PASSWORD' ssh YOUR_USER@YOUR_ILO4_IP -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 2 min 60"
-        sshpass -p 'YOUR_PASSWORD' ssh YOUR_USER@YOUR_ILO4_IP -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 3 min 60"
-        sshpass -p 'YOUR_PASSWORD' ssh YOUR_USER@YOUR_ILO4_IP -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 4 min 60"
-        sshpass -p 'YOUR_PASSWORD' ssh YOUR_USER@YOUR_ILO4_IP -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 5 min 60"
-        sshpass -p 'YOUR_PASSWORD' ssh YOUR_USER@YOUR_ILO4_IP -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 6 min 60"
-        sshpass -p 'YOUR_PASSWORD' ssh YOUR_USER@YOUR_ILO4_IP -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 7 min 60"
+echo "let the fans vary between 60 and 150 pwm levels"
+        sshpass -p 'Clement27930' ssh admin@192.168.1.79 -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p global unlock"        
+        sshpass -p 'Clement27930' ssh admin@192.168.1.79 -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 0 max 150"
+	sshpass -p 'Clement27930' ssh admin@192.168.1.79 -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 1 max 150"
+	sshpass -p 'Clement27930' ssh admin@192.168.1.79 -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 2 max 150"
+	sshpass -p 'Clement27930' ssh admin@192.168.1.79 -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 3 max 150"
+	sshpass -p 'Clement27930' ssh admin@192.168.1.79 -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 4 max 150"
+	sshpass -p 'Clement27930' ssh admin@192.168.1.79 -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 5 max 150"
+	sshpass -p 'Clement27930' ssh admin@192.168.1.79 -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 6 max 150"
+	sshpass -p 'Clement27930' ssh admin@192.168.1.79 -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 7 max 150"		
+        sshpass -p 'Clement27930' ssh admin@192.168.1.79 -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 0 min 60"		
+	sshpass -p 'Clement27930' ssh admin@192.168.1.79 -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 1 min 60"
+        sshpass -p 'Clement27930' ssh admin@192.168.1.79 -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 2 min 60"
+        sshpass -p 'Clement27930' ssh admin@192.168.1.79 -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 3 min 60"
+        sshpass -p 'Clement27930' ssh admin@192.168.1.79 -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 4 min 60"
+        sshpass -p 'Clement27930' ssh admin@192.168.1.79 -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 5 min 60"
+        sshpass -p 'Clement27930' ssh admin@192.168.1.79 -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 6 min 60"
+        sshpass -p 'Clement27930' ssh admin@192.168.1.79 -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 7 min 60"
 }
 
 menu_option_24() {
-echo "Let the fans vary between 60 and 255 pwm levels"
-	apt install -y sudo sshpass
-        sshpass -p 'YOUR_PASSWORD' ssh YOUR_USER@YOUR_ILO4_IP -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p global unlock"		
-        sshpass -p 'YOUR_PASSWORD' ssh YOUR_USER@YOUR_ILO4_IP -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 0 max 255"
-	sshpass -p 'YOUR_PASSWORD' ssh YOUR_USER@YOUR_ILO4_IP -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 1 max 255"
-	sshpass -p 'YOUR_PASSWORD' ssh YOUR_USER@YOUR_ILO4_IP -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 2 max 255"
-	sshpass -p 'YOUR_PASSWORD' ssh YOUR_USER@YOUR_ILO4_IP -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 3 max 255"
-	sshpass -p 'YOUR_PASSWORD' ssh YOUR_USER@YOUR_ILO4_IP -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 4 max 255"
-	sshpass -p 'YOUR_PASSWORD' ssh YOUR_USER@YOUR_ILO4_IP -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 5 max 255"
-	sshpass -p 'YOUR_PASSWORD' ssh YOUR_USER@YOUR_ILO4_IP -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 6 max 255"
-	sshpass -p 'YOUR_PASSWORD' ssh YOUR_USER@YOUR_ILO4_IP -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 7 max 255"		
-        sshpass -p 'YOUR_PASSWORD' ssh YOUR_USER@YOUR_ILO4_IP -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 0 min 60"		
-	sshpass -p 'YOUR_PASSWORD' ssh YOUR_USER@YOUR_ILO4_IP -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 1 min 60"
-        sshpass -p 'YOUR_PASSWORD' ssh YOUR_USER@YOUR_ILO4_IP -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 2 min 60"
-        sshpass -p 'YOUR_PASSWORD' ssh YOUR_USER@YOUR_ILO4_IP -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 3 min 60"
-        sshpass -p 'YOUR_PASSWORD' ssh YOUR_USER@YOUR_ILO4_IP -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 4 min 60"
-        sshpass -p 'YOUR_PASSWORD' ssh YOUR_USER@YOUR_ILO4_IP -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 5 min 60"
-        sshpass -p 'YOUR_PASSWORD' ssh YOUR_USER@YOUR_ILO4_IP -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 6 min 60"
-        sshpass -p 'YOUR_PASSWORD' ssh YOUR_USER@YOUR_ILO4_IP -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 7 min 60"
+echo "let the fans vary between 60 and 255 pwm levels"
+        sshpass -p 'Clement27930' ssh admin@192.168.1.79 -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p global unlock"		
+        sshpass -p 'Clement27930' ssh admin@192.168.1.79 -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 0 max 255"
+	sshpass -p 'Clement27930' ssh admin@192.168.1.79 -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 1 max 255"
+	sshpass -p 'Clement27930' ssh admin@192.168.1.79 -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 2 max 255"
+	sshpass -p 'Clement27930' ssh admin@192.168.1.79 -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 3 max 255"
+	sshpass -p 'Clement27930' ssh admin@192.168.1.79 -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 4 max 255"
+	sshpass -p 'Clement27930' ssh admin@192.168.1.79 -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 5 max 255"
+	sshpass -p 'Clement27930' ssh admin@192.168.1.79 -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 6 max 255"
+	sshpass -p 'Clement27930' ssh admin@192.168.1.79 -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 7 max 255"		
+        sshpass -p 'Clement27930' ssh admin@192.168.1.79 -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 0 min 60"		
+	sshpass -p 'Clement27930' ssh admin@192.168.1.79 -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 1 min 60"
+        sshpass -p 'Clement27930' ssh admin@192.168.1.79 -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 2 min 60"
+        sshpass -p 'Clement27930' ssh admin@192.168.1.79 -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 3 min 60"
+        sshpass -p 'Clement27930' ssh admin@192.168.1.79 -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 4 min 60"
+        sshpass -p 'Clement27930' ssh admin@192.168.1.79 -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 5 min 60"
+        sshpass -p 'Clement27930' ssh admin@192.168.1.79 -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 6 min 60"
+        sshpass -p 'Clement27930' ssh admin@192.168.1.79 -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p 7 min 60"
 }
 
 menu_option_25() {
@@ -277,6 +261,10 @@ echo "Install telegraf agent for linux"
 	curl -s https://repos.influxdata.com/influxdata-archive_compat.key > influxdata-archive_compat.key
 	echo 'deb [trusted=yes] https://repos.influxdata.com/debian stable main' | sudo tee /etc/apt/sources.list.d/influxdata.list
 	sudo apt-get install telegraf
+        cd /etc/telegraf
+        rm telegraf.conf
+        wget https://raw.githubusercontent.com/ElectroFactory/basic_packages/master/telegraf.conf
+        ls -la
 }
 
 press_enter() {
