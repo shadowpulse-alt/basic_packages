@@ -259,6 +259,7 @@ menu_option_25() {
 echo "Install telegraf agent for linux"
         apt-get update && apt install sudo git curl -y
         echo 'deb [trusted=yes] https://repos.influxdata.com/debian stable main' | sudo tee /etc/apt/sources.list.d/influxdata.list
+	sudo apt update
         sudo apt-get install telegraf
         cd /etc/telegraf
         sudo rm telegraf.conf
