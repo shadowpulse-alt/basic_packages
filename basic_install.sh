@@ -187,8 +187,7 @@ echo "Deactivate CD-ROM sources from sources.list configuration file"
 }
 
 menu_option_21() {
-echo "fix the fans at the 60 level of the pwm"
-	sshpass -p 'Clement27930' ssh admin@192.168.1.79 -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p global unlock"
+echo "fix the fans at the 60 level of the pwm"	
         sshpass -p 'Clement27930' ssh admin@192.168.1.79 -o KexAlgorithms=+diffie-hellman-group14-sha1 -o HostKeyAlgorithms=ssh-rsa -o HostKeyAlgorithms=ssh-dss -o HostKeyAlgorithms=ssh-rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "fan p global lock 60"
 }
 
