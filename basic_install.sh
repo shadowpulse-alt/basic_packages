@@ -27,7 +27,7 @@ menu_option_03() {
 echo "Install Oh-My-Zsh"
         sudo apt install -y git curl
         sudo apt install -y zsh
-        sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" && exit
+        sudo sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" && exit
 }
 
 menu_option_04() {
@@ -40,7 +40,7 @@ echo "Delete olds .zshrc files (classic user)"
 menu_option_05() {
 echo "Pull new .zshrc file (classic user)"
         cd /home/"$USER"
-        wget https://raw.githubusercontent.com/ElectroFactory/basic_packages/master/.zshrc
+        sudo wget https://raw.githubusercontent.com/ElectroFactory/basic_packages/master/.zshrc
         ls -la
 }
 
