@@ -77,8 +77,7 @@ echo "Check current folder"
 
 menu_option_11() {
 echo "Autorize ssh login as root"
-        sudo sed -i "s/#PermitRootLogin prohibit-password/PermitRootLogin yes/g" /etc/ssh/sshd_config
-        sudo sed -n 32p /etc/ssh/sshd_config
+        sudo sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
         sudo systemctl restart sshd
 }
 
