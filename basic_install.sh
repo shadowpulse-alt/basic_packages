@@ -185,18 +185,6 @@ echo "Deactivate CD-ROM sources from sources.list configuration file"
         sudo sed -n 3p /etc/apt/sources.list
 }
 
-#menu_option_25() {
-#echo "Install telegraf agent for linux"
-#        apt-get update && apt install sudo git curl -y
-#        echo 'deb [trusted=yes] https://repos.influxdata.com/debian stable main' | sudo tee /etc/apt/sources.list.d/influxdata.list
-#	sudo apt update
-#        sudo apt-get install telegraf
-#        cd /etc/telegraf
-#        sudo rm telegraf.conf
-#        sudo wget https://raw.githubusercontent.com/EdR0Z/basic_packages/master/telegraf.conf
-#        ls -la
-#}
-
 press_enter() {
   echo ""
   echo -n "      Press Enter to continue "
@@ -234,8 +222,6 @@ until [ "$selection" = "0" ]; do
   
   echo -e "        ${red}[19]  -  Autorize gnome login as root"
   echo -e "        ${brightwhite}[20]  -  Deactivate CD-ROM sources from sources.list configuration file"
-
-#  echo -e "        ${brightwhite}[21]  -  Install telegraf agent for linux"
   
   echo -e "        ${brightwhite}[00]  -  Exit"
   echo -e "        ${brightwhite}"
@@ -264,7 +250,6 @@ until [ "$selection" = "0" ]; do
     18 )  clear ; menu_option_18 ; press_enter ;;
     19 )  clear ; menu_option_19 ; press_enter ;;
     20 )  clear ; menu_option_20 ; press_enter ;;
-#   21 )  clear ; menu_option_21 ; press_enter ;;
     00 )  clear ; exit ;;
     *  )  clear ; incorrect_selection ; press_enter ;;
     esac
