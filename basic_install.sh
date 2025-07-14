@@ -181,6 +181,10 @@ echo "Deactivate CD-ROM sources from sources.list configuration file"
         sudo sed -i "s/deb cdrom:/#deb cdrom:/g" /etc/apt/sources.list
         sudo sed -n 3p /etc/apt/sources.list
 }
+menu_option_16() {
+echo "Uninstall Oh-my-ZSH"
+        uninstall_oh_my_zsh
+}
 
 press_enter() {
   echo ""
@@ -213,7 +217,8 @@ until [ "$selection" = "0" ]; do
   echo -e "        ${cyan}[13]  -  Install guests addons for ESXi"  
   echo -e "        ${cyan}[14]  -  Autorize gnome login as root"
   echo -e "        ${red}[15]  -  Deactivate CD-ROM sources from sources.list configuration file"
-  
+  echo -e "        ${red}[16]  -  Uninstall Oh-my-ZSH"
+
   echo -e "        ${brightwhite}[00]  -  Exit"
   echo -e "        ${brightwhite}"
   echo -n "        -  Enter selection: "
